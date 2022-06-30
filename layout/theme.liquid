@@ -1,34 +1,20 @@
 <!doctype html>
 <html lang="{{ request.locale.iso_code }}">
   <head>
+    <title>{{ page_title }}</title>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="description" content="{{ page_description | escape }}">
     <link rel="canonical" href="{{ canonical_url }}">
-    <title>
-      {{ page_title }}
-      {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
-      {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
-      {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
-    </title>
-
-    {% if page_description %}
-      <meta name="description" content="{{ page_description | escape }}">
-    {% endif %}
-
-    {% render 'meta-tags' %}
-
-    <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
     {{ content_for_header }}
 
-
-    {{ 'base.css' | asset_url | stylesheet_tag }}
   </head>
 
-  <body class="gradient">
+  <body>
 
     {% section 'header' %}
-
+    
 
     {% section 'footer' %}
 
