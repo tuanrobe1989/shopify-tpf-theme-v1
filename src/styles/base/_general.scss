@@ -1,0 +1,570 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 100%;
+}
+
+body {
+    font-family: $font1 !important;
+    font-size: rem(14px);
+    line-height: rem(22px);
+    color: $color2;
+}
+
+/* GENERAL */
+p {
+    margin: rem(10px) 0;
+}
+
+a {
+    color: inherit;
+}
+
+/* HEADING */
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 400;
+    margin: rem(15px) 0;
+}
+
+strong {
+    font-weight: 500;
+}
+
+h1,
+.h1 {
+    font-size: rem(30px);
+    line-height: rem(37px);
+    font-weight: 600 !important;
+    color: $color1;
+
+    @include breakpoint-up(md) {
+        font-size: rem(40px);
+        line-height: rem(49px);
+    }
+}
+
+.wp-block-cover {
+    h1:not(.has-text-color) {
+        color: $white;
+    }
+}
+
+h2,
+.h2 {
+    font-size: rem(24px);
+    line-height: rem(32px);
+
+    @include breakpoint-up(md) {
+        font-size: rem(28px);
+        line-height: rem(32px);
+    }
+}
+
+
+h3,
+.h3,
+.note {
+    font-size: rem(18px);
+    line-height: rem(22px);
+
+    @include breakpoint-up(md) {
+        font-size: rem(24px);
+        line-height: rem(29px);
+    }
+}
+
+h4,
+.h4 {
+    font-size: rem(15px);
+    line-height: rem(22px);
+
+    @include breakpoint-up(md) {
+        font-size: rem(16px);
+        line-height: rem(24px);
+    }
+}
+
+h5,
+.h5 {
+    font-size: rem(15px);
+    line-height: rem(22px);
+    font-weight: 400 !important;
+
+    @include breakpoint-up(md) {
+        font-size: rem(16px);
+        line-height: rem(24px);
+    }
+}
+
+.wp-block-post-title {
+    a {
+        color: inherit !important;
+        text-decoration: none;
+    }
+}
+
+.color_main {
+    color: $color1;
+}
+
+.color_main_inside {
+    a {
+        color: $color1 !important;
+        text-decoration: none;
+    }
+}
+
+
+//COLORS
+.text {
+    &__white {
+        color: $white;
+    }
+
+    &__main {
+        color: $color1;
+    }
+}
+
+//MAX WIDTH
+.mw {
+    &_540 {
+        max-width: 540px;
+    }
+
+    &_570 {
+        max-width: 570px;
+    }
+
+    &_580 {
+        max-width: 580px;
+    }
+
+    &_660 {
+        max-width: 660px;
+    }
+
+    &_846 {
+        max-width: 846px;
+    }
+
+    &_888 {
+        max-width: 888px;
+    }
+
+    &_890 {
+        max-width: 890px;
+    }
+
+    &_1032 {
+        max-width: 1032px;
+    }
+}
+
+
+/* MARGIN TOP */
+.mt {
+    &_0 {
+        margin-top: 0 !important;
+    }
+
+    &_05 {
+        margin-top: 0.5rem !important;
+    }
+
+    &_1 {
+        margin-top: 1rem !important;
+    }
+
+    &_2 {
+        margin-top: 2rem !important;
+    }
+}
+
+/* MARGIN BOTTOM */
+.mb {
+    &_0 {
+        margin-bottom: 0 !important;
+    }
+
+    &_05 {
+        margin-bottom: 0.5rem !important;
+    }
+
+    &_1 {
+        margin-bottom: 1 !important;
+    }
+
+    &_2 {
+        margin-bottom: 2 !important;
+    }
+}
+
+
+/* BACKGROUND */
+.bg {
+    &__blue {
+        background-color: $blue;
+        color: $white;
+    }
+
+    &__grey {
+        background-color: $grey;
+    }
+}
+
+//LEARN MORE ITEMS
+.learnmore__items {
+    &>.wp-block-column:not(:first-child) {
+        @include breakpoint-up(lg) {
+            margin-left: 4em !important;
+        }
+    }
+
+    .wp-block-columns {
+        .wp-block-column {
+            @include breakpoint-up(lg) {
+                margin-left: 0 !important;
+            }
+        }
+    }
+
+    &--img {
+        @include breakpoint-up(sm) {
+            flex-basis: rem(200px) !important;
+        }
+    }
+}
+
+
+/*COMMON*/
+.common {
+    &__paddingTopBottomNormal {
+        padding-top: 0.8rem;
+        padding-bottom: 0.8rem;
+
+        @include breakpoint-up(md) {
+            padding-top: 1.2rem;
+            padding-bottom: 1.2rem;
+        }
+    }
+
+    &__paddingTopBottom {
+        padding-top: rem(32px);
+        padding-bottom: rem(32px);
+        margin-bottom: 0;
+
+        @include breakpoint-up(md) {
+            padding-top: rem(60px);
+            padding-bottom: rem(60px);
+        }
+
+        .wp-block-columns {
+            margin-bottom: 0;
+
+            >.wp-block-column {
+
+                h1,
+                h2,
+                h3,
+                h4,
+                h5,
+                h6,
+                .h1,
+                .h2,
+                .h3,
+                .h4,
+                .h5,
+                .h6 {
+                    margin-top: 0;
+                }
+            }
+        }
+    }
+
+    &__paddingTop {
+        padding-top: rem(32px);
+
+        @include breakpoint-up(md) {
+            padding-top: rem(60px);
+        }
+    }
+
+    &__paddingbottom {
+        padding-bottom: rem(32px);
+
+        @include breakpoint-up(md) {
+            padding-bottom: rem(60px);
+        }
+    }
+}
+
+.paddingLeftDefault {
+    padding-left: rem(54px);
+
+    @include breakpoint-up(md) {
+        padding-left: rem(94px);
+    }
+
+    @include breakpoint-up(lg) {
+        padding-left: rem(114px);
+    }
+}
+
+/*STYLE DEFAULT TABLE*/
+.wp-block-table {
+    width: 100% !important;
+
+    &.column_1_is_title {
+        table {
+            tr {
+
+                td,
+                th {
+                    &:first-child {
+                        font-weight: 500;
+                        width: 50%;
+
+                        &::before {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &.from4 {
+        overflow: auto;
+        display: block;
+
+        table {
+            @include breakpoint-down(sm) {
+                min-width: 140%;
+            }
+
+            tr {
+
+                td,
+                th {
+                    &:first-child {
+                        width: 35% !important;
+                    }
+
+                    width: 23.333%;
+
+                    @include breakpoint-up(md) {
+                        width: 25% !important;
+                    }
+
+                    box-sizing: border-box;
+                }
+            }
+        }
+    }
+
+    table {
+        width: 100%;
+
+        thead {
+            th {
+                color: $color1;
+                font-size: rem(15px);
+                line-height: rem(22px);
+                vertical-align: top;
+
+                @include breakpoint-up(md) {
+                    font-size: rem(16px);
+                    line-height: rem(24px);
+                }
+
+                &:before {
+                    content: '';
+                    display: block;
+                    height: rem(30px);
+                    width: 70%;
+                    background: $color5;
+                    margin-bottom: 0.5rem;
+                }
+            }
+        }
+
+        th,
+        td {
+            border-bottom: 1px solid $gray-3;
+            padding: 0.5rem;
+            text-align: left;
+            vertical-align: middle;
+
+            @include breakpoint-up(md) {
+                padding: 1rem;
+            }
+        }
+
+        td {
+            .icon-checked {
+                @include breakpoint-down(md) {
+                    width: 20.5px;
+                    height: auto;
+                }
+            }
+        }
+    }
+}
+
+.wp-block-group__inner-container {
+    // background: $grey-light;
+    // padding: 1.5rem;
+}
+
+.gocenter {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.keepPadding {
+    background: red;
+
+    @include breakpoint-down(md) {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+
+    @include breakpoint-up(md) {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}
+
+// COVER FORM INSIDE
+.formInside {
+    .wp-block-column {
+        &:first-child {
+            @include breakpoint-up(lg) {
+                max-width: 630px;
+                padding-right: 1rem;
+            }
+        }
+    }
+}
+
+//CONTENT SETTINGS
+.content,
+.block-editor-block-list__block {
+
+    ul,
+    ol {
+        &:not(.none) {
+            li {
+                margin: rem(10px) 0;
+            }
+        }
+
+        &.none {
+            list-style-type: none;
+        }
+    }
+
+    ol {
+        // margin-left: 1rem;
+    }
+
+    ul {
+        &:not(.none) {
+            list-style-type: none;
+
+            li {
+                padding-left: rem(32px);
+                background: url(~images/icon-check.png) no-repeat left top 0.1rem;
+            }
+        }
+    }
+
+    .wp-block-post-template {
+        li {
+            padding-left: 0 !important;
+            background: 0 !important;
+            background: none !important;
+            margin: 0 !important;
+        }
+    }
+}
+
+ol.cover {
+    counter-reset: my-awesome-counter;
+    list-style: none;
+
+    li {
+        counter-increment: my-awesome-counter;
+        position: relative;
+        padding: 1rem 0 1rem 3rem;
+
+        &:before {
+            content: counter(my-awesome-counter);
+            color: $color1;
+            font-size: 1rem;
+            position: absolute;
+            width: rem(35px);
+            height: rem(35px);
+            line-height: rem(35px);
+            top: 0.5rem;
+            left: 0;
+            border-radius: 50%;
+            text-align: center;
+            border: 1px solid $color1;
+        }
+    }
+}
+
+//HS FROM
+.hs-form-iframe {
+    margin-top: 2rem;
+
+    &.noneTop {
+        margin-top: 0;
+    }
+}
+
+.icon-earch {
+    background: url(~images/icon-earth.png) no-repeat left center;
+    padding-left: rem(28px);
+    text-transform: uppercase;
+    display: inline-block;
+    min-height: rem(20px);
+}
+
+.icon-time {
+    background: url(~images/icon-time.png) no-repeat left center;
+    padding-left: rem(28px);
+    display: inline-block;
+    min-height: rem(20px);
+}
+
+.icon-address{
+    background: url(~images/icon-address.png) no-repeat top left;
+    padding-left: rem(28px);
+    display: inline-block;
+    min-height: rem(20px);
+}
+.icon-phone{
+    background: url(~images/icon-phone.png) no-repeat top left;
+    padding-left: rem(28px);
+    display: inline-block;
+    min-height: rem(20px);
+}
+.sgpb-fadeIn{
+    transform: translate(-50%, -50%);
+    left: 50% !important;
+    top: 50% !important;
+    >div{
+        padding: 2rem !important;
+        background-color: $white !important;
+    }
+}

@@ -1,0 +1,8 @@
+node_modules
+src
+.gitignore
+package.json
+postcss.config.js
+tailwind.config.js
+webpack.config.js
+yarn.lock
