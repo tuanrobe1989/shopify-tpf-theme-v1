@@ -7,8 +7,7 @@ import LazyLoad from "vanilla-lazyload";
 // import 'lazysizes';
 // import 'lazysizes/plugins/parent-fit/ls.parent-fit';
 
-var lazyLoadInstance = new LazyLoad({
-    // Your custom settings go here
+var lazyLoadInstance = new LazyLoad({ // Your custom settings go here
 });
 
 var tpfObjects = {};
@@ -47,7 +46,7 @@ tpfObjects.tabsContent = function () {
     }
 }
 
-tpfObjects.defaultCarousel = function(){
+tpfObjects.defaultCarousel = function () {
     if (jQuery('.owl-carousel').length > 0) {
         jQuery('.owl-carousel').each(function (index, item) {
             var oc = $(this);
@@ -67,16 +66,28 @@ tpfObjects.defaultCarousel = function(){
                     1024: {
                         items: oc.data('items-1024') || 1
                     }
-                },
+                }
             }
             oc.owlCarousel(options);
         });
     }
 }
 
+tpfObjects.menu = function(){
+    var currentTop;
+    jQuery(window).scroll(function(x){
+        currentTop =  jQuery(window).scrollTop();
+        if(currentTop >= 210){
+            jQuery('body').addClass('sticked');
+        }else{
+            jQuery('body').removeClass('sticked');
+        }
+    })
+}
 
 jQuery(document).ready(function ($) {
     MatchHeight.init();
+    tpfObjects.menu();
     tpfObjects.hemhamburger();
     tpfObjects.faqItem();
     tpfObjects.tabsContent();

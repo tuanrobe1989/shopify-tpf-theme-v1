@@ -17,13 +17,15 @@ const entry = {
     scripts: './src/scripts.js',
     // cover_iframe: './src/cover_iframe.js',
 };
-let plugins = [
-    new webpack.ProvidePlugin(
+let plugins = [new webpack.ProvidePlugin(
         {$: 'jquery', jQuery: 'jquery', 'window.jQuery': 'jquery'}
     ),
     new MiniCssExtractPlugin(
         {filename: 'styles.css'}
     ),
+    new webpack.ProvidePlugin(
+        {$: 'jquery', jQuery: 'jquery'}
+    )
     // new MediaQueryPlugin(
     //     {
     //         include: ['index','styles'],
@@ -84,8 +86,7 @@ module.exports = [{
                         loader: "babel-loader"
 
                     }
-                },
-                {
+                }, {
                     test: /\.(s[ac]|c)ss*/i,
                     use: [
                         MiniCssExtractPlugin.loader, 'css-loader',
@@ -93,8 +94,7 @@ module.exports = [{
                         'postcss-loader',
                         'sass-loader',
                     ]
-                },
-                {
+                }, {
                     test: /\.(gif|jpg|jpeg|png)$/,
                     loader: 'file-loader',
                     // options: {
@@ -104,7 +104,17 @@ module.exports = [{
                     generator: {
                         filename: '[name][ext][query]'
                     }
-                },
+                }, {
+                    test: /\.ttf$/,
+                    use: [
+                        {
+                            loader: 'ttf-loader',
+                            options: {
+                                name: './[hash].[ext]'
+                            }
+                        },
+                    ]
+                }
                 // {
                 //     test: /\.html$/i,
                 //     loader: "html-loader",
@@ -139,8 +149,8 @@ module.exports = [{
 
         plugins: plugins,
 
-        externals: {
-            jquery: 'jQuery'
-        }
+        // externals: {
+        //     jquery: 'jQuery'
+        // }
 
     },]
