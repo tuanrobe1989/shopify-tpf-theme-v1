@@ -2,6 +2,10 @@ import './styles/index.scss';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 import 'owl.carousel';
+import '@fortawesome/fontawesome-free/js/fontawesome'
+import '@fortawesome/fontawesome-free/js/solid'
+import '@fortawesome/fontawesome-free/js/regular'
+import '@fortawesome/fontawesome-free/js/brands'
 import MatchHeight from 'matchheight';
 import LazyLoad from "vanilla-lazyload";
 // import 'lazysizes';
@@ -9,6 +13,9 @@ import LazyLoad from "vanilla-lazyload";
 
 var lazyLoadInstance = new LazyLoad({ // Your custom settings go here
 });
+
+window.lazyLoadOptions = { // Your custom settings go here
+};
 
 var tpfObjects = {};
 
@@ -73,17 +80,17 @@ tpfObjects.defaultCarousel = function () {
     }
 }
 
-tpfObjects.menu = function(){
+tpfObjects.menu = function () {
     var currentTop;
-    jQuery(window).scroll(function(x){
-        currentTop =  jQuery(window).scrollTop();
-        if(currentTop >= 210){
+    jQuery(window).scroll(function (x) {
+        currentTop = jQuery(window).scrollTop();
+        if (currentTop >= 210) {
             jQuery('body').addClass('sticked');
-        }else{
+        } else {
             jQuery('body').removeClass('sticked');
         }
     })
-    jQuery('.header__hamb').click(function(){
+    jQuery('.header__hamb').click(function () {
         jQuery(this).toggleClass('actived');
         jQuery('body').toggleClass('menuActived');
     })

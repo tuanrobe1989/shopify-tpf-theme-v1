@@ -1,8 +1,23 @@
-.container{
+.container {
     margin: 0 auto;
     padding-left: 1rem;
     padding-right: 1rem;
 }
-a{
+
+a {
     transition: all 0.3s linear;
+}
+
+img.lazy {
+    opacity: 0;
+}
+
+img:not(.initial) {
+    transition: opacity 0.3s;
+}
+
+img.initial,
+img.loaded,
+img.error {
+    opacity: 1;
 }

@@ -1,7 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 :root {
   --primary: #f05214;
   --sgray: #717171;
@@ -15,6 +14,7 @@
 @import "./base/mixins";
 @import "./base/common";
 @import "./layouts/header";
+@import "./layouts/footer";
 html,
 body {
   font-family: 'Jura', sans-serif;

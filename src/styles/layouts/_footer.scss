@@ -1,3 +1,6 @@
 .footer{
-
+    color: var(--white);
+    &__copyright{
+        border-top: 1px solid #001b43;
+    }
 }

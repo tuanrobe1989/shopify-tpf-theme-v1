@@ -1,10 +1,13 @@
 const path = require('path');
 const webpack = require('webpack');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CopyPlugin = require('copy-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const MediaQueryPlugin = require('media-query-plugin');
 const BUILD_DIR = path.resolve(__dirname, './assets');
-const IMG_DIR = path.resolve(__dirname, './assets/images');
+const SRC_DIR = path.resolve(__dirname, './src');
+const SRC_IMAGES_DIR = path.resolve(__dirname, './src/images');
+// const IMG_DIR = path.resolve(__dirname, './assets/images');
 
 let mode = "development";
 let target = "web";
@@ -25,6 +28,16 @@ let plugins = [new webpack.ProvidePlugin(
     ),
     new webpack.ProvidePlugin(
         {$: 'jquery', jQuery: 'jquery'}
+    ),
+    new CopyPlugin(
+        {
+            patterns: [
+                {
+                    from: SRC_IMAGES_DIR,
+                    to: BUILD_DIR
+                },
+            ]
+        }
     )
     // new MediaQueryPlugin(
     //     {
@@ -74,7 +87,7 @@ module.exports = [{
         target: target,
         resolve: {
             alias: {
-                'images': IMG_DIR
+                'images': BUILD_DIR
             }
         },
         module: {
