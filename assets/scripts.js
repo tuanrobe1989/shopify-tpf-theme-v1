@@ -14702,6 +14702,10 @@ tpfObjects.menu = function () {
       jQuery('body').removeClass('sticked');
     }
   });
+  jQuery('.header__hamb').click(function () {
+    jQuery(this).toggleClass('actived');
+    jQuery('body').toggleClass('menuActived');
+  });
 };
 
 jQuery(document).ready(function ($) {

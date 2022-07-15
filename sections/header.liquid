@@ -1,99 +1,110 @@
-<header class="header fixed w-screen top-0">
+<header class="header w-screen">
     <!--NOTE TEXT-->
-    <div id="header__note" class="header__note bg-primary">
+    <div id="header__note" class="fixed w-screen top-0 header__note bg-primary">
         <div class="container">
             <div class="block py-1 text-center font-semibold text-white">{{ section.settings.intro | upcase }}</div>
         </div>
     </div>
-    <!--MENU BAR-->
-    <div class="bg-black text-white pt-8 pb-5">
-        <div class="container lg:flex lg:items-center lg:justify-between">
-            {%- if section.settings.logo != blank -%}
-            {%- assign logo_alt = section.settings.logo.alt | default: shop.name | escape -%}
-                    <a href="{{shop.url}}">
-                        {%- if request.page_type == 'index' -%} 
-                            <h1 title="{{ shop.name }}">
-                        {%- endif -%}
-                            {{ section.settings.logo | image_url: width: section.settings.width | image_tag:
-                                class: 'header__heading-logo',
-                                width: 250,
-                                height: 46,
-                                alt: logo_alt
-                            }}
-                        {%- if request.page_type == 'index' -%}    
-                            </h1>
-                        {%- endif -%}
-                    </a>
-            {%- endif -%}
-            <ul class="lg:flex lg:gap-5">
-                <li>
-                    <a href="#" class="flex items-center gap-1 text-primary">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                        </svg>
-                        <span class="text-lg text-white">Search</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="flex items-center gap-1 text-primary">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                        </svg>
-                        <span class="text-lg text-white">Wishlist</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="flex items-center gap-1 text-primary">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                        </svg>
-                        <span class="text-lg text-white">Sign In</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="flex justify-end gap-1 text-primary relative">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-lg" viewBox="0 0 20 20" fill="currentColor">
-                            <path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" />
-                        </svg>
-                        <span class="absolute -top-5 right-0.5 bg-yellow-300 text-black borde rounded w-5 h-5 block text-center flex justify-center items-center">0</span>
-                    </a>
-                </li>
-            </ul>
+    <!--MENU WRAP-->
+    <div class="fixed w-screen top-[2rem] header__menuWrap">
+        <!--MENU BAR-->
+        <div class="header__topBar">
+            <div class="container lg:flex lg:items-center lg:justify-between">
+                {%- if section.settings.logo != blank -%}
+                {%- assign logo_alt = section.settings.logo.alt | default: shop.name | escape -%}
+                        <a href="{{shop.url}}">
+                            {%- if request.page_type == 'index' -%} 
+                                <h1 title="{{ shop.name }}">
+                            {%- endif -%}
+                                {{ section.settings.logo | image_url: width: section.settings.width | image_tag:
+                                    class: 'header__heading--logo',
+                                    width: 250,
+                                    height: 46,
+                                    alt: logo_alt
+                                }}
+                            {%- if request.page_type == 'index' -%}    
+                                </h1>
+                            {%- endif -%}
+                        </a>
+                {%- endif -%}
+                <span class="header__hamb">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 header__hamb--keep" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 header__hamb--actived" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                      </svg>
+                </span>
+                <ul class="header__taskBar">
+                    <li class="header__taskBar__item">
+                        <a href="#" class="flex items-center gap-1 text-primary">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                            </svg>
+                            <span class="text-sm md:text-lg text-white">Search</span>
+                        </a>
+                    </li>
+                    <li class="header__taskBar__item">
+                        <a href="#" class="flex items-center gap-1 text-primary">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                            </svg>
+                            <span class="text-sm md:text-lg text-white">Wishlist</span>
+                        </a>
+                    </li>
+                    <li class="header__taskBar__item">
+                        <a href="#" class="flex items-center gap-1 text-primary">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                            </svg>
+                            <span class="text-sm md:text-lg text-white">Sign In</span>
+                        </a>
+                    </li>
+                    <li class="header__taskBar__item header__taskBar__cart">
+                        <a href="#" class="flex justify-end gap-1 text-primary relative">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-lg" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" />
+                            </svg>
+                            <span class="header__taskBar__cart--num">0</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </div>
-    <!--NAVIGATION-->
-    <div class="bg-black text-white pt-5 pb-8">
-        <nav class="container">
-            <ul class="lg:flex lg:justify-center lg:items-center lg:gap-5 text-xl">
-                <li>
-                    <a href="#" class="hover:text-primary">NEW ARRIVALS</a>
-                </li>
-                <li>
-                    <a href="#" class="hover:text-primary">ALL TEAMS</a>
-                </li>
-                <li>
-                    <a href="#" class="hover:text-primary">EOFY SALE</a>
-                </li>
-                <li>
-                    <a href="#" class="hover:text-primary">MENS</a>
-                </li>
-                <li>
-                    <a href="#" class="hover:text-primary">WOMENS</a>
-                </li>
-                <li>
-                    <a href="#" class="hover:text-primary">YOUTH</a>
-                </li>
-                <li>
-                    <a href="#" class="hover:text-primary">ACCESSORIES</a>
-                </li>
-                <li>
-                    <a href="#" class="hover:text-primary">HEADWEAR</a>
-                </li>
-                <li>
-                    <a href="#" class="hover:text-primary">MEMORABILIA</a>
-                </li>
-            </ul>
-        </nav>
+        <!--NAVIGATION-->
+        <div class="header__navWrap">
+            <nav class="container">
+                <ul class="header__nav">
+                    <li class="header__nav__itemWrap">
+                        <a href="#" class="header__nav__item">NEW ARRIVALS</a>
+                    </li>
+                    <li class="header__nav__itemWrap">
+                        <a href="#" class="header__nav__item">ALL TEAMS</a>
+                    </li>
+                    <li class="header__nav__itemWrap">
+                        <a href="#" class="header__nav__item">EOFY SALE</a>
+                    </li>
+                    <li class="header__nav__itemWrap">
+                        <a href="#" class="header__nav__item">MENS</a>
+                    </li>
+                    <li class="header__nav__itemWrap">
+                        <a href="#" class="header__nav__item">WOMENS</a>
+                    </li>
+                    <li class="header__nav__itemWrap">
+                        <a href="#" class="header__nav__item">YOUTH</a>
+                    </li>
+                    <li class="header__nav__itemWrap">
+                        <a href="#" class="header__nav__item">ACCESSORIES</a>
+                    </li>
+                    <li class="header__nav__itemWrap">
+                        <a href="#" class="header__nav__item">HEADWEAR</a>
+                    </li>
+                    <li class="header__nav__itemWrap">
+                        <a href="#" class="header__nav__item">MEMORABILIA</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
     </div>
 </header>
 <figure class="text-center py-2  flex justify-center">

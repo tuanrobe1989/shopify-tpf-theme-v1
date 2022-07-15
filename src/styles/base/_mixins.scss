@@ -1,18 +1,4 @@
 @charset "utf-8";
-$color1: #F99D1C;
-$color2: #555655;
-$color3: #656565;
-$color4: #EAEAEA;
-$color5: #FF0070;
-$color6: #6A6A6A;
-$white: #FFFFFF;
-$blue: #051A3B;
-$grown: #806760;
-$grey: #F7F7F7;
-$grey-light: #FAFAFA;
-$gray: #BCBCBC;
-$gray-2: #979797;
-$gray-3: #C5C5C5;
 
 @mixin transition($param) {
   -webkit-transition: $param;
@@ -67,17 +53,21 @@ $gray-3: #C5C5C5;
 }
 
 $breakpoints-up: (
-  "xs": "576px",
-  "sm": "768px",
-  "md": "992px",
-  "lg": "1200px",
+  "xs": '480px',
+  "sm": '576px',
+  "md": '768px',
+  "lg": '1024px',
+  "xl": '1280px',
+  "2xl": '1536px'
 );
 
 $breakpoints-down: (
-  "xs": "575px",
-  "sm": "767px",
-  "md": "991px",
-  "lg": "1199px",
+  "xs": '479px',
+  "sm": '575px',
+  "md": '767px',
+  "lg": '1023px',
+  "xl": '1279px',
+  "2xl": '1535px'
 );
 
 @mixin breakpoint-up($size) {

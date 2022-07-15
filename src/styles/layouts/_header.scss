@@ -1,3 +1,281 @@
-.header{
+.header {
+    &__heading {
+        &--logo {
+            @include breakpoint-down(lg) {
+                max-width: 134px;
+            }
+        }
+    }
 
+    &__hamb {
+        color: var(--white);
+        transition: all 0.3s linear;
+
+        @include breakpoint-down(lg) {
+            position: fixed;
+            right: 1rem;
+            top: 2.7rem;
+        }
+
+        @include breakpoint-up(lg) {
+            position: absolute;
+            right: 1rem;
+            opacity: 0;
+        }
+
+        &--keep,
+        &--actived {
+            transition: all 0.3s linear;
+        }
+
+        &--actived {
+            position: absolute;
+            margin-top: -100%;
+            opacity: 0;
+        }
+    }
+
+    &__note {}
+
+    &__navWrap {
+        background-color: var(--black);
+        color: var(--white);
+        transition: all 0.5s linear;
+        overflow: hidden;
+
+        @include breakpoint-down(lg) {
+            height: 0;
+            opacity: 0;
+        }
+
+        @include breakpoint-up(lg) {
+            padding-top: 1.25rem;
+            padding-bottom: 2rem;
+        }
+
+        .container {
+            @include breakpoint-down(lg) {
+                padding-left: 0;
+                padding-right: 0;
+            }
+        }
+    }
+
+    &__nav {
+        @include breakpoint-up(lg) {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        &__item {
+            font-weight: 700;
+            letter-spacing: -0.2px;
+
+            @include breakpoint-down(lg) {
+                padding: 0.7rem 1rem;
+                display: block;
+                text-decoration: none;
+            }
+
+            &Wrap {
+                @include breakpoint-down(lg) {
+                    &:first-child {
+                        border-top: 1px solid var(--sgray);
+                    }
+
+                    border-bottom: 1px solid var(--sgray);
+                }
+            }
+        }
+    }
+
+    &__menuWrap {
+        transition: 0.3s all linear;
+    }
+
+    &__topBar {
+        background-color: var(--black);
+
+        @include breakpoint-down(lg) {
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+
+        @include breakpoint-up(lg) {
+            padding-top: 2rem;
+            padding-bottom: 1.25rem;
+        }
+
+        .container {
+            position: relative;
+        }
+    }
+
+    &__taskBar {
+        display: flex;
+        box-sizing: border-box;
+        transition: 0.3s all linear;
+
+        @include breakpoint-down(lg) {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--black);
+            padding: 0.5rem 1rem;
+        }
+
+        @include breakpoint-up(lg) {
+            margin-left: -0.5rem;
+            margin-right: -0.5rem;
+        }
+
+        &__item {
+            padding-left: 0.5rem;
+            padding-right: 0.5rem;
+
+            @include breakpoint-down(lg) {
+                width: 25%;
+            }
+
+            &:not(:first-child) {
+                @include breakpoint-down(lg) {
+                    border-left: 1px solid var(--primary);
+                }
+            }
+        }
+
+        &__cart {
+            &--num {
+                background-color: var(--yellow);
+                width: 20px;
+                height: 20px;
+                display: block;
+                text-align: center;
+                border-radius: 50%;
+                line-height: 20px;
+                padding: 0;
+                margin: 0;
+                color: var(--black);
+
+                @include breakpoint-down(lg) {
+                    position: relative;
+                    top: 4px;
+                }
+
+                @include breakpoint-up(lg) {
+                    position: absolute;
+                    top: -20px;
+                    right: 2.5px;
+                }
+            }
+        }
+    }
+
+    &__menuWrap {
+        box-sizing: border-box;
+    }
+}
+
+body.sticked {
+    .header {
+        &__hamb {
+            opacity: 1;
+
+            @include breakpoint-down(lg) {
+                top: 0.8rem;
+            }
+        }
+
+        &__nav {
+            @include breakpoint-up(lg) {
+                gap: 0;
+                &__item{
+                    padding-top: 1rem;
+                    padding-bottom: 1rem;
+                    display: block;
+                }
+                &__itemWrap{
+                    width: 100%;
+                    border-bottom: 1px solid var(--sgray);
+                }
+            }
+        }
+
+        &__navWrap {
+            height: 0;
+            opacity: 0;
+        }
+
+        &__note {
+            visibility: hidden;
+            opacity: 0;
+            height: 0;
+        }
+
+        &__menuWrap {
+            left: 0;
+            top: 0;
+        }
+    }
+
+    .header__topBar {
+        .container {
+            @include breakpoint-up(lg) {
+                position: relative;
+            }
+        }
+    }
+
+    .header__taskBar {
+        @include breakpoint-up(lg) {
+            margin-right: 5rem;
+        }
+    }
+
+    .header__navWrap {
+        @include breakpoint-up(lg) {
+            padding: 0;
+            position: fixed;
+            right: -100%;
+            width: 100%;
+            max-width: 380px;
+            top: 99px;
+            height: calc(100% - 99px);
+
+            .header__nav {
+                flex-direction: column;
+
+            }
+        }
+    }
+}
+
+body.menuActived {
+    .header__navWrap {
+        @include breakpoint-down(lg) {
+            height: 100%;
+            max-height: 680px;
+            opacity: 1;
+        }
+
+        @include breakpoint-up(lg) {
+            opacity: 1;
+            right: 0;
+
+            overflow: auto;
+        }
+
+    }
+
+    .header__hamb--keep {
+        opacity: 0;
+    }
+
+    .header__hamb--actived {
+        opacity: 1;
+    }
 }

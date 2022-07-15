@@ -9,21 +9,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    {% if section.settings.favicon != null%}
+    {% if settings.favicon %}
       <link
         rel="icon"
         type="image/png"
-        href="{{ section.settings.favicon | image_url}}"
+        href="{{ settings.favicon | image_url}}"
       >
     {% endif %}
-    <link
-      href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    >
+    <link href="https://fonts.googleapis.com/css2?family=Jura:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     {{ content_for_header }}
     {{ 'styles.css' | asset_url | stylesheet_tag }}
   </head>
-  {{section.settings | json }}
   <body class="lg:pt-[210px]">
     {% section 'header' %}
     {{ content_for_layout }}
