@@ -1,20 +1,27 @@
 {% schema %}
 {
-  "name": "Slideshow",
-  "tag": "section",
-  "class": "section-header",
-  "blocks": [
-    {
-      "name": "Slide",
-      "type": "slide",
-      "settings": [
+    "name": "Landing page image",
+    "blocks": [{
+        "name" : "Landing Page Image",
+        "type": "Hero",
+        "settings": [
         {
-          "type": "image_picker",
-          "id": "image",
-          "label": "Image"
+            "type": "text",
+            "id": "title",
+            "label": "Name of this section"
+        },
+        {
+            "type": "textarea",
+            "id": "page_handle",
+            "label": "The pages where this image is shown"
+        },
+        {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Choose an image"
         }
-      ]
+        ]       
     }
- ]
+    ]
 }
 {% endschema %}
