@@ -126,6 +126,7 @@
             width: 100%;
             background-color: var(--black);
             padding: 0.5rem 1rem;
+            border-top: 1px solid var(--primary);
         }
 
         @include breakpoint-up(lg) {

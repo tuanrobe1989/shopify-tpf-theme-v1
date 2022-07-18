@@ -4,6 +4,7 @@
 :root {
   --primary: #f05214;
   --sgray: #717171;
+  --gray: #495057;
   --white: #FFF;
   --black: #000;
   --yellow: #fc3;
@@ -13,6 +14,7 @@
 @import "../../node_modules/normalize.css/normalize.css";
 @import "./base/mixins";
 @import "./base/common";
+@import "./base/input";
 @import "./layouts/header";
 @import "./layouts/footer";
 html,
