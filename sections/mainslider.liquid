@@ -1,27 +1,29 @@
 {% schema %}
 {
-    "name": "Landing page image",
-    "blocks": [{
-        "name" : "Landing Page Image",
-        "type": "Hero",
-        "settings": [
+  "name": "Main Slider",
+  "blocks": [
+    {
+      "name": "Slide",
+      "type": "slide",
+      "settings": [
         {
-            "type": "text",
-            "id": "title",
-            "label": "Name of this section"
+          "type": "image_picker",
+          "id": "Large image",
+          "label": "Large Image"
         },
         {
-            "type": "textarea",
-            "id": "page_handle",
-            "label": "The pages where this image is shown"
-        },
-        {
-            "type": "image_picker",
-            "id": "image",
-            "label": "Choose an image"
+          "type": "image_picker",
+          "id": "Small image",
+          "label": "Small Image"
         }
-        ]       
+      ]
     }
-    ]
+  ],
+  "presets": [
+    {
+      "category": "Main Slider",
+      "name": "Main Slider"
+    }
+  ]
 }
 {% endschema %}
