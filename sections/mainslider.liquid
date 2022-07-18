@@ -1,6 +1,19 @@
 {% schema %}
 {
   "name": "Slideshow",
-  "tag": "section"
+  "tag": "section",
+  "blocks": [
+    {
+      "name": "Slide",
+      "type": "slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        }
+      ]
+    }
+ ]
 }
 {% endschema %}
