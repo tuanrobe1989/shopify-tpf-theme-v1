@@ -1,6 +1,8 @@
 {
     "sections":{
-        
+        "mainslider":{
+            "type": "mainslider"
+        }
     },
-    "order": []
+    "order": ["mainslider"]
 }
