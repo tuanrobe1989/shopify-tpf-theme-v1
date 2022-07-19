@@ -20338,13 +20338,13 @@ tpfObjects.defaultCarousel = function () {
         nav: oc.data('nav') === true ? true : false,
         responsive: {
           580: {
-            items: oc.data('items-580') || 1
+            items: oc.data('items-sm') || 1
           },
           992: {
-            items: oc.data('items-992') || 1
+            items: oc.data('items-md') || 1
           },
           1024: {
-            items: oc.data('items-1024') || 1
+            items: oc.data('items-lg') || 1
           }
         }
       };
