@@ -1,8 +1,9 @@
+{% if section.blocks %}
 <section id="mainslider-section-[id]">
   <div class="owl-carousel owl-theme" data-lazyLoad="true">
     {% for block in section.blocks %}
         {% if block.settings.large_image != blank  and block.settings.small_image != blank %}
-            <a href="#" class="item">
+            <a href="{{ block.settings.link }}" class="item">
                 <picture>
                   <source
                     srcset="{{ block.settings.large_image | img_url: 'master' }}"
@@ -12,7 +13,7 @@
                     srcset="{{ block.settings.small_image | img_url: 'master' }}"
                     media="(max-width: 767px)"
                   >
-                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mPccwYAAkoBipwM/g8AAAAASUVORK5CYII=" width="800" height="800" lass="owl-lazy">
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mPccwYAAkoBipwM/g8AAAAASUVORK5CYII=" width="800" height="800" title="{{ block.settings.title }}" alt="{{ block.settings.title }}" lass="owl-lazy">
                 </picture>
               </a>
         </div>
@@ -20,6 +21,7 @@
     {% endfor %}
   </div>
 </section>
+{% endif %}
 {% schema %}
 {
   "name": "Main Slider",
@@ -45,7 +47,7 @@
         },
         {
           "type": "text",
-          "id": "Title",
+          "id": "title",
           "label": "Image Title"
         }
       ]
