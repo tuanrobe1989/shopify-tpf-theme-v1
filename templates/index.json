@@ -28,9 +28,17 @@
       ],
       "settings": {
       }
+    },
+    "1658256731444a1374": {
+      "type": "heading",
+      "settings": {
+        "heading": "100% OFFICIAL MOTORSPORT MERCHANDISE",
+        "heading-tag": "h2"
+      }
     }
   },
   "order": [
-    "1658241649b6dc033e"
+    "1658241649b6dc033e",
+    "1658256731444a1374"
   ]
 }
