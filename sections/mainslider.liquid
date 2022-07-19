@@ -1,5 +1,5 @@
 {% if section.blocks %}
-<section id="mainslider-section-{{ block.id }}">
+<section id="mainslider-section-{{ section.id }}">
   <div class="owl-carousel owl-theme dots-bottom dot-square" data-lazyLoad="true">
     {% for block in section.blocks %}
         {% if block.settings.large_image != blank  and block.settings.small_image != blank %}

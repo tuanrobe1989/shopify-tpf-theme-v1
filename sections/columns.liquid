@@ -1,0 +1,45 @@
+<section id="heading-section-{{ section.id }}">
+<div class="container">
+
+</div>
+</section>
+{% schema %}
+{
+  "name": "heading",
+  "settings": [
+    {
+      "type": "range",
+      "id": "mobile",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "label": "Mobile - Number of Columns",
+      "default": 1
+    },
+    {
+      "type": "range",
+      "id": "tablet",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "label": "Tablet - Number of Columns",
+      "default": 1
+    },
+    {
+      "type": "range",
+      "id": "pc",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "label": "PC - Number of Columns",
+      "default": 1
+    }
+  ],
+  "presets": [
+    {
+      "category": "columns",
+      "name": "Columns"
+    }
+  ]
+}
+{% endschema %}

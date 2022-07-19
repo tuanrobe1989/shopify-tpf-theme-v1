@@ -954,6 +954,14 @@ video {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
 }
+.px-5{
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+.py-5{
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+}
 .text-center{
   text-align: center;
 }
@@ -1420,6 +1428,10 @@ body {
   .md\:text-lg{
     font-size: 1.125rem;
     line-height: 1.75rem;
+  }
+  .md\:text-3xl{
+    font-size: 1.875rem;
+    line-height: 2.25rem;
   }
 }
 
