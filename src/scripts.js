@@ -63,15 +63,22 @@ tpfObjects.defaultCarousel = function () {
                 margin: oc.data('margin') || 0,
                 dots: oc.data('dots') === false ? false : true,
                 nav: oc.data('nav') === true ? true : false,
+                lazyLoad:oc.data('lazyLoad') === true ? true : false,
                 responsive: {
-                    580: {
+                    0: {
+                        items: oc.data('items-xs') || 1
+                    },
+                    567: {
                         items: oc.data('items-sm') || 1
                     },
-                    992: {
+                    768: {
                         items: oc.data('items-md') || 1
                     },
                     1024: {
-                        items: oc.data('items-lg') || 1
+                        items: oc.data('items-xl') || 1
+                    },
+                    1280: {
+                        items: oc.data('items-xl') || 1
                     }
                 }
             }
