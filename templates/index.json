@@ -1,6 +1,24 @@
 {
-    "sections":{
-        
-    },
-    "order": []
+  "sections": {
+    "1658241649b6dc033e": {
+      "type": "mainslider",
+      "blocks": {
+        "48a2a7bc-d384-42d4-a2de-5c331c395e4b": {
+          "type": "slide",
+          "settings": {
+            "large_image": "shopify:\/\/shop_images\/CS023116_MSO---_40-all-Hoodies---Week-2-Jul_Slider1_V1.jpg",
+            "small_image": "shopify:\/\/shop_images\/CS023116_MSO---_40-all-Hoodies---Week-2-Jul_FB-1_V1_1.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "48a2a7bc-d384-42d4-a2de-5c331c395e4b"
+      ],
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "1658241649b6dc033e"
+  ]
 }
