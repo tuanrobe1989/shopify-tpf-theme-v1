@@ -35,10 +35,19 @@
         "heading": "100% OFFICIAL MOTORSPORT MERCHANDISE",
         "heading-tag": "h2"
       }
+    },
+    "16582582026b2396ec": {
+      "type": "columns",
+      "settings": {
+        "mobile": 1,
+        "tablet": 2,
+        "pc": 4
+      }
     }
   },
   "order": [
     "1658241649b6dc033e",
-    "16582573408e06f6c3"
+    "16582573408e06f6c3",
+    "16582582026b2396ec"
   ]
 }
