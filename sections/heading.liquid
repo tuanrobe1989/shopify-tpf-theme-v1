@@ -1,9 +1,11 @@
-<div>
+<div id="heading-section-[id]">
+    <div class="container">
+        <{{ section.settings.heading-tag }} class="text-center text-3xl font-extrabold">{{ section.settings.heading }}</{{ section.settings.heading-tag }}>
+    </div>
 </div>
 {% schema %}
 {
   "name": "heading",
-  "tag": "section",
   "settings": [
     {
       "type": "text",
