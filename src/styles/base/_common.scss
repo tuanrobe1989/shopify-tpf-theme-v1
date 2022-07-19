@@ -21,3 +21,33 @@ img.loaded,
 img.error {
     opacity: 1;
 }
+
+/*
+    CUSTOM CAROUSELS
+*/
+.dots-bottom {
+    &.dot-square {
+        .owl-dots {
+            .owl-dot span {
+                width: 30px !important;
+                height: 5px !important;
+                border-radius: 0 !important;
+            }
+        }
+    }
+
+    .owl-dots {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translate(0, -50%);
+
+        .owl-dot.active span {
+            background-color: var(--dot-actived) !important;
+        }
+
+        .owl-dot span {
+            background-color: var(--dot-defautl) !important;
+        }
+    }
+}

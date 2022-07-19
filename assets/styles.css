@@ -880,9 +880,6 @@ video {
 .h-7{
   height: 1.75rem;
 }
-.h-\[30rem\]{
-  height: 30rem;
-}
 .w-full{
   width: 100%;
 }
@@ -936,10 +933,6 @@ video {
 .bg-black{
   --tw-bg-opacity: 1;
   background-color: rgba(0, 0, 0, var(--tw-bg-opacity));
-}
-.bg-gray-500{
-  --tw-bg-opacity: 1;
-  background-color: rgba(107, 114, 128, var(--tw-bg-opacity));
 }
 .px-4{
   padding-left: 1rem;
@@ -999,6 +992,8 @@ video {
   --white: #FFF;
   --black: #000;
   --yellow: #fc3;
+  --dot-defautl: #3e4d65;
+  --dot-actived: #FFF;
 }
 
 .container {
@@ -1025,6 +1020,30 @@ img.initial,
 img.loaded,
 img.error {
   opacity: 1;
+}
+
+/*
+    CUSTOM CAROUSELS
+*/
+.dots-bottom.dot-square .owl-dots .owl-dot span {
+  width: 30px !important;
+  height: 5px !important;
+  border-radius: 0 !important;
+}
+.dots-bottom .owl-dots {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  -webkit-transform: translate(0, -50%);
+          transform: translate(0, -50%);
+}
+.dots-bottom .owl-dots .owl-dot.active span {
+  background-color: #FFF !important;
+  background-color: var(--dot-actived) !important;
+}
+.dots-bottom .owl-dots .owl-dot span {
+  background-color: #3e4d65 !important;
+  background-color: var(--dot-defautl) !important;
 }
 
 input {
