@@ -11,10 +11,20 @@
             "link": "https:\/\/motor-sport-outlet.myshopify.com\/",
             "title": "$40 All Hoodies - Motor Sport Outlet"
           }
+        },
+        "673d9d05-176b-463b-8500-5869839871c5": {
+          "type": "slide",
+          "settings": {
+            "large_image": "shopify:\/\/shop_images\/CS023060_MSO_-_Free-Beanie_-_Week_2_Jul_SLIDER_V1.jpg",
+            "small_image": "shopify:\/\/shop_images\/CS023060_MSO_-_Free_Beanie_-_Week_2_Jul_FB_V1_1.jpg",
+            "link": "https:\/\/motor-sport-outlet.myshopify.com\/",
+            "title": "Free Monster Winter Beanie - Motor Sport Outlet"
+          }
         }
       },
       "block_order": [
-        "48a2a7bc-d384-42d4-a2de-5c331c395e4b"
+        "48a2a7bc-d384-42d4-a2de-5c331c395e4b",
+        "673d9d05-176b-463b-8500-5869839871c5"
       ],
       "settings": {
       }
