@@ -38,6 +38,46 @@
     },
     "16582582026b2396ec": {
       "type": "columns",
+      "blocks": {
+        "e55be633-54c7-4f0a-8d82-edf02cb3351c": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/CS022672_MSO---Web-boxes---Week-3-Feb_RBAR.jpg",
+            "link": "#",
+            "title": "Red bull - Ampol Racing"
+          }
+        },
+        "09800196-58c3-4e8e-a052-f031cd603210": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/CS022672_MSO---Web-boxes---Week-3-Feb_TF.jpg",
+            "link": "#",
+            "title": "Tick Ford - Racing"
+          }
+        },
+        "758ca18a-b359-4972-8854-2f89db597d44": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/CS021660_Monster.png",
+            "link": "#",
+            "title": "Monster Energy"
+          }
+        },
+        "8181921e-eff8-4ccf-8f7a-9dba9ee32fca": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/CS022672_MSO---Web-boxes---Week-3-Feb_CL.jpg",
+            "link": "#",
+            "title": "Craig Lowndes"
+          }
+        }
+      },
+      "block_order": [
+        "e55be633-54c7-4f0a-8d82-edf02cb3351c",
+        "09800196-58c3-4e8e-a052-f031cd603210",
+        "758ca18a-b359-4972-8854-2f89db597d44",
+        "8181921e-eff8-4ccf-8f7a-9dba9ee32fca"
+      ],
       "settings": {
         "mobile": 1,
         "tablet": 2,
