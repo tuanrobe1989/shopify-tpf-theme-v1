@@ -1,3 +1,8 @@
+#shopify-section-header{
+    position: relative;
+    z-index: 9;
+    transition: 0.3s all linear;
+}
 .header {
     &__heading {
         &--logo {
