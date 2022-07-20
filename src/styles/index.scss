@@ -4,6 +4,7 @@
 :root {
   --primary: #f05214;
   --sgray: #717171;
+  --lgray: #e6e6e6;
   --gray: #495057;
   --white: #FFF;
   --black: #000;
@@ -18,6 +19,7 @@
 @import "./base/input";
 @import "./layouts/header";
 @import "./layouts/footer";
+@import "./layouts/product";
 html,
 body {
   font-family: 'Jura', sans-serif;

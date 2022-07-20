@@ -271,7 +271,7 @@ body.menuActived {
         @include breakpoint-up(lg) {
             opacity: 1;
             right: 0;
-
+            border-left: 2px solid var(--sgray);
             overflow: auto;
         }
 

@@ -20349,7 +20349,7 @@ tpfObjects.defaultCarousel = function () {
             items: oc.data('items-md') || 1
           },
           1024: {
-            items: oc.data('items-xl') || 1
+            items: oc.data('items-lg') || 1
           },
           1280: {
             items: oc.data('items-xl') || 1
