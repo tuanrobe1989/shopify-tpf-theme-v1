@@ -1,12 +1,51 @@
 <section>
-    <div class="container">
-        AAAAA
-    </div>
+  <div class="container">AAAAA</div>
 </section>
 {% schema %}
 {
   "name": "Collection Products",
   "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "radio",
+      "id": "heading-tag",
+      "label": "Tag",
+      "options": [
+        {
+          "value": "h1",
+          "label": "H1"
+        },
+        {
+          "value": "h2",
+          "label": "H2"
+        },
+        {
+          "value": "h3",
+          "label": "H3"
+        },
+        {
+          "value": "h4",
+          "label": "H4"
+        },
+        {
+          "value": "h5",
+          "label": "H5"
+        },
+        {
+          "value": "h6",
+          "label": "H6"
+        },
+        {
+          "value": "strong",
+          "label": "Strong"
+        }
+      ],
+      "default": "h1"
+    },
     {
       "type": "range",
       "id": "mobile",
@@ -35,7 +74,6 @@
       "default": 1
     }
   ],
-
   "presets": [
     {
       "category": "collection-products",
