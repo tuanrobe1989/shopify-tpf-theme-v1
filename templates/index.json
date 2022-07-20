@@ -186,14 +186,23 @@
         "4df9c82d-e9cb-427a-9742-01946016cbb9": {
           "type": "slide",
           "settings": {
-            "image": "shopify:\/\/shop_images\/CS022672_MSO---Web-boxes---Week-3-Feb_Kids_V2_1d551988-5813-4421-8011-e22e8ce8b432.jpg",
-            "link": "",
-            "title": ""
+            "image": "shopify:\/\/shop_images\/CS022672_MSO---Web-boxes---Week-3-Feb_Polos_v2.jpg",
+            "link": "#",
+            "title": "Polos"
+          }
+        },
+        "b545bd85-b9d3-4c73-984c-274af79a1fc3": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/CS022672_MSO---Web-boxes---Week-3-Feb_Tshirts_1_1.jpg",
+            "link": "#",
+            "title": "T-SHIRTS"
           }
         }
       },
       "block_order": [
-        "4df9c82d-e9cb-427a-9742-01946016cbb9"
+        "4df9c82d-e9cb-427a-9742-01946016cbb9",
+        "b545bd85-b9d3-4c73-984c-274af79a1fc3"
       ],
       "settings": {
         "mobile": 1,
