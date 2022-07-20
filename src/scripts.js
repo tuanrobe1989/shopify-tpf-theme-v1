@@ -10,6 +10,7 @@ import MatchHeight from 'matchheight';
 import LazyLoad from "vanilla-lazyload";
 // import 'lazysizes';
 // import 'lazysizes/plugins/parent-fit/ls.parent-fit';
+var string = "w-full w-1/2 w-1/3 w-1/4 md:w-full md:w-1/2 md:w-1/3 md:w-1/4 lg:w-full lg:w-1/2 lg:w-1/3 lg:w-1/4  xl:w-full xl:w-1/2 xl:w-1/3 xl:w-1/4";
 
 var lazyLoadInstance = new LazyLoad({ // Your custom settings go here
 });

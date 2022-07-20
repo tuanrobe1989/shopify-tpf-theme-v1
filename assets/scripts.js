@@ -20288,6 +20288,7 @@ __webpack_require__.r(__webpack_exports__);
  // import 'lazysizes';
 // import 'lazysizes/plugins/parent-fit/ls.parent-fit';
 
+var string = "w-full w-1/2 w-1/3 w-1/4 md:w-full md:w-1/2 md:w-1/3 md:w-1/4 lg:w-full lg:w-1/2 lg:w-1/3 lg:w-1/4  xl:w-full xl:w-1/2 xl:w-1/3 xl:w-1/4";
 var lazyLoadInstance = new (vanilla_lazyload__WEBPACK_IMPORTED_MODULE_9___default())({// Your custom settings go here
 });
 window.lazyLoadOptions = {// Your custom settings go here

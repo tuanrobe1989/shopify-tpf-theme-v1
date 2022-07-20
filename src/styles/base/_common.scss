@@ -51,3 +51,40 @@ img.error {
         }
     }
 }
+
+.hover_image_zoom {
+    transition: 0.3s all linear;
+    overflow: hidden;
+    position: relative;
+
+    &:hover {
+        transform: scale(1.1);
+
+        &::before,
+        &::after {
+            width: calc(100% - 2rem);
+        }
+    }
+
+    &::before,
+    &::after {
+        content: "";
+        transition: 0.3s all linear;
+        width: 0;
+        height: 2px;
+        background-color: var(--primary);
+        display: block;
+        position: absolute;
+        
+    }
+
+    &::before {
+        top: 1px;
+        left: 1rem;
+    }
+
+    &::after {
+        bottom: 1px;
+        right: 1rem;
+    }
+}
