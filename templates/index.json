@@ -179,6 +179,27 @@
         "tablet": 2,
         "pc": 4
       }
+    },
+    "165828808518cd8d34": {
+      "type": "columns",
+      "blocks": {
+        "4df9c82d-e9cb-427a-9742-01946016cbb9": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/CS022672_MSO---Web-boxes---Week-3-Feb_Kids_V2_1d551988-5813-4421-8011-e22e8ce8b432.jpg",
+            "link": "",
+            "title": ""
+          }
+        }
+      },
+      "block_order": [
+        "4df9c82d-e9cb-427a-9742-01946016cbb9"
+      ],
+      "settings": {
+        "mobile": 1,
+        "tablet": 2,
+        "pc": 2
+      }
     }
   },
   "order": [
@@ -186,6 +207,7 @@
     "16582573408e06f6c3",
     "16582582026b2396ec",
     "165828708344642840",
-    "165828787999b83b73"
+    "165828787999b83b73",
+    "165828808518cd8d34"
   ]
 }
