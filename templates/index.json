@@ -213,6 +213,8 @@
     "1658297840f7918af3": {
       "type": "collection-products",
       "settings": {
+        "heading": "New Arrivals",
+        "heading-tag": "h2",
         "mobile": 2,
         "tablet": 3,
         "pc": 4
