@@ -83,11 +83,60 @@
         "tablet": 2,
         "pc": 4
       }
+    },
+    "165828708344642840": {
+      "type": "columns",
+      "blocks": {
+        "fd79f810-d333-4594-aa04-f97e3582f05d": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/CS022672_MSO---Web-boxes---Week-3-Feb_Mens_1.jpg",
+            "link": "#",
+            "title": "Mens - Motor Sport Outlet"
+          }
+        },
+        "4df694eb-ee28-4948-aa53-12d51dc86c80": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/CS022672_MSO---Web-boxes---Week-3-Feb_Kids_V2.jpg",
+            "link": "#",
+            "title": "Kids - Motor Sport Outlet"
+          }
+        },
+        "49dc08f9-b7f2-4adf-ad22-f323d9f3916d": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/CS022672_MSO---Web-boxes---Week-3-Feb_Womens.jpg",
+            "link": "#",
+            "title": "Womens - Motor Sport Outlet"
+          }
+        },
+        "d8455b47-0c80-42c4-9dc1-d63d7a536d26": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/CS022672_MSO---Web-boxes---Week-3-Feb_Memorabilia.jpg",
+            "link": "#",
+            "title": "Memorabilia"
+          }
+        }
+      },
+      "block_order": [
+        "fd79f810-d333-4594-aa04-f97e3582f05d",
+        "4df694eb-ee28-4948-aa53-12d51dc86c80",
+        "49dc08f9-b7f2-4adf-ad22-f323d9f3916d",
+        "d8455b47-0c80-42c4-9dc1-d63d7a536d26"
+      ],
+      "settings": {
+        "mobile": 1,
+        "tablet": 2,
+        "pc": 2
+      }
     }
   },
   "order": [
     "1658241649b6dc033e",
     "16582573408e06f6c3",
-    "16582582026b2396ec"
+    "16582582026b2396ec",
+    "165828708344642840"
   ]
 }
