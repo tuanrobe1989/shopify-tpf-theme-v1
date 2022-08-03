@@ -214,6 +214,7 @@
       "type": "collection-products",
       "settings": {
         "heading": "New Arrivals",
+        "collection": "all-product",
         "heading-tag": "h2",
         "mobile": 2,
         "tablet": 3,
