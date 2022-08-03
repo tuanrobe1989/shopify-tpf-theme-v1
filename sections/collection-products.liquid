@@ -1,3 +1,19 @@
+{% assign mobile_items = 2 %}
+{% if section.settings.mobile != blank %}
+  {% assign mobile_items = section.settings.mobile %}
+{% endif %}
+
+{% assign tablet_items = 3 %}
+{% if section.settings.tablet %}
+  {% assign tablet_items = section.settings.tablet %}
+{% endif %}
+
+{% assign pc_items = 4 %}
+{% if section.settings.pc %}
+  {% assign pc_items = section.settings.pc %}
+{% endif %}
+
+
 <section
   id="collection-products-section-{{ section.id }}"
   class="container pt-10 py-4"
@@ -9,14 +25,17 @@
     <div
       class="owl-carousel owl-theme"
       data-items-xs="1"
-      data-items-md="2"
-      data-items-lg="3"
-      data-items-xl="4"
+      data-items-md="{{ mobile_items }}"
+      data-items-lg="{{ tablet_items }}"
+      data-items-xl="{{ pc_items }}"
       data-margin="32"
       data-dots="false"
     >
       <div data-mh class="productItemWrap">
-        <div data-mh class="productItem border border-lgray p-5 hover:shadow-2xl">
+        <div
+          data-mh
+          class="productItem border border-lgray p-5 hover:shadow-2xl"
+        >
           <a href="#">
             <img
               src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfoAAAH6CAQAAABFHEbCAAAETUlEQVR42u3TAQ0AAAjDMO7fEhIQhQ9oJSxZegp4JKYH0wOmB0wPmB4wPWB6wPSA6QHTA6YHTA+YHjA9mB4wPWB6wPSA6QHTA6YHTA+YHjA9YHrA9IDpAdOD6QHTA6YHTA+YHjA9YHrA9IDpAdMDpgdMD5geTA+YHjA9YHrA9IDpAdMDpgdMD5geMD1gesD0gOnB9IDpAdMDpgdMD5geMD1gesD0gOkB0wOmB0wPphcBTA+YHjA9YHrA9IDpAdMDpgdMD5geMD1gesD0YHrA9IDpAdMDpgdMD5geMD1gesD0gOkB0wOmB0wPpgdMD5geMD1gesD0gOkB0wOmB0wPmB4wPWB6MD1gesD0gOkB0wOmB0wPmB4wPWB6wPSA6QHTA6YH0wOmB0wPmB4wPWB6wPSA6QHTA6YHTA+YHjA9mB4wPWB6wPSA6QHTA6YHTA+YHjA9YHrA9IDpAdOD6QHTA6YHTA+YHjA9YHrA9IDpAdMDpgdMD5geTG96MD1gesD0gOkB0wOmB0wPmB4wPWB6wPSA6QHTg+kB0wOmB0wPmB4wPWB6wPSA6QHTA6YHTA+YHjA9mB4wPWB6wPSA6QHTA6YHTA+YHjA9YHrA9IDpwfSA6QHTA6YHTA+YHjA9YHrA9IDpAdMDpgdMD5geTA+YHjA9YHrA9IDpAdMDpgdMD5geMD1gesD0YHrA9IDpAdMDpgdMD5geMD1gesD0gOkB0wOmB0wPpgdMD5geMD1gesD0gOkB0wOmB0wPmB4wPWB6ML3pwfSA6QHTA6YHTA+YHjA9YHrA9IDpAdMDpgdMD6YHTA+YHjA9YHrA9IDpAdMDpgdMD5geMD1gesD0YHrA9IDpAdMDpgdMD5geMD1gesD0gOkB0wOmB9MDpgdMD5geMD1gesD0gOkB0wOmB0wPmB4wPWB6MD1gesD0gOkB0wOmB0wPmB4wPWB6wPSA6QHTg+lFANMDpgdMD5geMD1gesD0gOkB0wOmB0wPmB4wPZgeMD1gesD0gOkB0wOmB0wPmB4wPWB6wPSA6QHTg+kB0wOmB0wPmB4wPWB6wPSA6QHTA6YHTA+YHkwPmB4wPWB6wPSA6QHTA6YHTA+YHjA9YHrA9IDpwfSA6QHTA6YHTA+YHjA9YHrA9IDpAdMDpgdMD6YHTA+YHjA9YHrA9IDpAdMDpgdMD5geMD1gesD0YHrA9IDpAdMDpgdMD5geMD1gesD0gOkB0wOmB9ObHkwPmB4wPWB6wPSA6QHTA6YHTA+YHjA9YHrA9GB6wPSA6QHTA6YHTA+YHjA9YHrA9IDpAdMDpgdMD6YHTA+YHjA9YHrA9IDpAdMDpgdMD5geMD1gejA9YHrA9IDpAdMDpgdMD5geMD1gesD0gOkB0wOmB9MDpgdMD5geMD1gesD0gOkB0wOmB0wPmB4wPZgeMD1gesD0gOkB0wOmB0wPmB4wPWB6wPSA6QHTg+kB0wPXLHr1CPiJtEGaAAAAAElFTkSuQmCC"
@@ -52,7 +71,10 @@
       </div>
 
       <div data-mh class="productItemWrap">
-        <div data-mh class="productItem border border-lgray p-5 hover:shadow-md">
+        <div
+          data-mh
+          class="productItem border border-lgray p-5 hover:shadow-md"
+        >
           <a href="#">
             <img
               src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfoAAAH6CAQAAABFHEbCAAAETUlEQVR42u3TAQ0AAAjDMO7fEhIQhQ9oJSxZegp4JKYH0wOmB0wPmB4wPWB6wPSA6QHTA6YHTA+YHjA9mB4wPWB6wPSA6QHTA6YHTA+YHjA9YHrA9IDpAdOD6QHTA6YHTA+YHjA9YHrA9IDpAdMDpgdMD5geTA+YHjA9YHrA9IDpAdMDpgdMD5geMD1gesD0gOnB9IDpAdMDpgdMD5geMD1gesD0gOkB0wOmB0wPphcBTA+YHjA9YHrA9IDpAdMDpgdMD5geMD1gesD0YHrA9IDpAdMDpgdMD5geMD1gesD0gOkB0wOmB0wPpgdMD5geMD1gesD0gOkB0wOmB0wPmB4wPWB6MD1gesD0gOkB0wOmB0wPmB4wPWB6wPSA6QHTA6YH0wOmB0wPmB4wPWB6wPSA6QHTA6YHTA+YHjA9mB4wPWB6wPSA6QHTA6YHTA+YHjA9YHrA9IDpAdOD6QHTA6YHTA+YHjA9YHrA9IDpAdMDpgdMD5geTG96MD1gesD0gOkB0wOmB0wPmB4wPWB6wPSA6QHTg+kB0wOmB0wPmB4wPWB6wPSA6QHTA6YHTA+YHjA9mB4wPWB6wPSA6QHTA6YHTA+YHjA9YHrA9IDpwfSA6QHTA6YHTA+YHjA9YHrA9IDpAdMDpgdMD5geTA+YHjA9YHrA9IDpAdMDpgdMD5geMD1gesD0YHrA9IDpAdMDpgdMD5geMD1gesD0gOkB0wOmB0wPpgdMD5geMD1gesD0gOkB0wOmB0wPmB4wPWB6ML3pwfSA6QHTA6YHTA+YHjA9YHrA9IDpAdMDpgdMD6YHTA+YHjA9YHrA9IDpAdMDpgdMD5geMD1gesD0YHrA9IDpAdMDpgdMD5geMD1gesD0gOkB0wOmB9MDpgdMD5geMD1gesD0gOkB0wOmB0wPmB4wPWB6MD1gesD0gOkB0wOmB0wPmB4wPWB6wPSA6QHTg+lFANMDpgdMD5geMD1gesD0gOkB0wOmB0wPmB4wPZgeMD1gesD0gOkB0wOmB0wPmB4wPWB6wPSA6QHTg+kB0wOmB0wPmB4wPWB6wPSA6QHTA6YHTA+YHkwPmB4wPWB6wPSA6QHTA6YHTA+YHjA9YHrA9IDpwfSA6QHTA6YHTA+YHjA9YHrA9IDpAdMDpgdMD6YHTA+YHjA9YHrA9IDpAdMDpgdMD5geMD1gesD0YHrA9IDpAdMDpgdMD5geMD1gesD0gOkB0wOmB9ObHkwPmB4wPWB6wPSA6QHTA6YHTA+YHjA9YHrA9GB6wPSA6QHTA6YHTA+YHjA9YHrA9IDpAdMDpgdMD6YHTA+YHjA9YHrA9IDpAdMDpgdMD5geMD1gejA9YHrA9IDpAdMDpgdMD5geMD1gesD0gOkB0wOmB9MDpgdMD5geMD1gesD0gOkB0wOmB0wPmB4wPZgeMD1gesD0gOkB0wOmB0wPmB4wPWB6wPSA6QHTg+kB0wPXLHr1CPiJtEGaAAAAAElFTkSuQmCC"
@@ -86,9 +108,12 @@
           </div>
         </div>
       </div>
-      
+
       <div data-mh class="productItemWrap">
-        <div data-mh class="productItem border border-lgray p-5 hover:shadow-md">
+        <div
+          data-mh
+          class="productItem border border-lgray p-5 hover:shadow-md"
+        >
           <a href="#">
             <img
               src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfoAAAH6CAQAAABFHEbCAAAETUlEQVR42u3TAQ0AAAjDMO7fEhIQhQ9oJSxZegp4JKYH0wOmB0wPmB4wPWB6wPSA6QHTA6YHTA+YHjA9mB4wPWB6wPSA6QHTA6YHTA+YHjA9YHrA9IDpAdOD6QHTA6YHTA+YHjA9YHrA9IDpAdMDpgdMD5geTA+YHjA9YHrA9IDpAdMDpgdMD5geMD1gesD0gOnB9IDpAdMDpgdMD5geMD1gesD0gOkB0wOmB0wPphcBTA+YHjA9YHrA9IDpAdMDpgdMD5geMD1gesD0YHrA9IDpAdMDpgdMD5geMD1gesD0gOkB0wOmB0wPpgdMD5geMD1gesD0gOkB0wOmB0wPmB4wPWB6MD1gesD0gOkB0wOmB0wPmB4wPWB6wPSA6QHTA6YH0wOmB0wPmB4wPWB6wPSA6QHTA6YHTA+YHjA9mB4wPWB6wPSA6QHTA6YHTA+YHjA9YHrA9IDpAdOD6QHTA6YHTA+YHjA9YHrA9IDpAdMDpgdMD5geTG96MD1gesD0gOkB0wOmB0wPmB4wPWB6wPSA6QHTg+kB0wOmB0wPmB4wPWB6wPSA6QHTA6YHTA+YHjA9mB4wPWB6wPSA6QHTA6YHTA+YHjA9YHrA9IDpwfSA6QHTA6YHTA+YHjA9YHrA9IDpAdMDpgdMD5geTA+YHjA9YHrA9IDpAdMDpgdMD5geMD1gesD0YHrA9IDpAdMDpgdMD5geMD1gesD0gOkB0wOmB0wPpgdMD5geMD1gesD0gOkB0wOmB0wPmB4wPWB6ML3pwfSA6QHTA6YHTA+YHjA9YHrA9IDpAdMDpgdMD6YHTA+YHjA9YHrA9IDpAdMDpgdMD5geMD1gesD0YHrA9IDpAdMDpgdMD5geMD1gesD0gOkB0wOmB9MDpgdMD5geMD1gesD0gOkB0wOmB0wPmB4wPWB6MD1gesD0gOkB0wOmB0wPmB4wPWB6wPSA6QHTg+lFANMDpgdMD5geMD1gesD0gOkB0wOmB0wPmB4wPZgeMD1gesD0gOkB0wOmB0wPmB4wPWB6wPSA6QHTg+kB0wOmB0wPmB4wPWB6wPSA6QHTA6YHTA+YHkwPmB4wPWB6wPSA6QHTA6YHTA+YHjA9YHrA9IDpwfSA6QHTA6YHTA+YHjA9YHrA9IDpAdMDpgdMD6YHTA+YHjA9YHrA9IDpAdMDpgdMD5geMD1gesD0YHrA9IDpAdMDpgdMD5geMD1gesD0gOkB0wOmB9ObHkwPmB4wPWB6wPSA6QHTA6YHTA+YHjA9YHrA9GB6wPSA6QHTA6YHTA+YHjA9YHrA9IDpAdMDpgdMD6YHTA+YHjA9YHrA9IDpAdMDpgdMD5geMD1gejA9YHrA9IDpAdMDpgdMD5geMD1gesD0gOkB0wOmB9MDpgdMD5geMD1gesD0gOkB0wOmB0wPmB4wPZgeMD1gesD0gOkB0wOmB0wPmB4wPWB6wPSA6QHTg+kB0wPXLHr1CPiJtEGaAAAAAElFTkSuQmCC"
@@ -124,7 +149,10 @@
       </div>
 
       <div data-mh class="productItemWrap">
-        <div data-mh class="productItem border border-lgray p-5 hover:shadow-md">
+        <div
+          data-mh
+          class="productItem border border-lgray p-5 hover:shadow-md"
+        >
           <a href="#">
             <img
               src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfoAAAH6CAQAAABFHEbCAAAETUlEQVR42u3TAQ0AAAjDMO7fEhIQhQ9oJSxZegp4JKYH0wOmB0wPmB4wPWB6wPSA6QHTA6YHTA+YHjA9mB4wPWB6wPSA6QHTA6YHTA+YHjA9YHrA9IDpAdOD6QHTA6YHTA+YHjA9YHrA9IDpAdMDpgdMD5geTA+YHjA9YHrA9IDpAdMDpgdMD5geMD1gesD0gOnB9IDpAdMDpgdMD5geMD1gesD0gOkB0wOmB0wPphcBTA+YHjA9YHrA9IDpAdMDpgdMD5geMD1gesD0YHrA9IDpAdMDpgdMD5geMD1gesD0gOkB0wOmB0wPpgdMD5geMD1gesD0gOkB0wOmB0wPmB4wPWB6MD1gesD0gOkB0wOmB0wPmB4wPWB6wPSA6QHTA6YH0wOmB0wPmB4wPWB6wPSA6QHTA6YHTA+YHjA9mB4wPWB6wPSA6QHTA6YHTA+YHjA9YHrA9IDpAdOD6QHTA6YHTA+YHjA9YHrA9IDpAdMDpgdMD5geTG96MD1gesD0gOkB0wOmB0wPmB4wPWB6wPSA6QHTg+kB0wOmB0wPmB4wPWB6wPSA6QHTA6YHTA+YHjA9mB4wPWB6wPSA6QHTA6YHTA+YHjA9YHrA9IDpwfSA6QHTA6YHTA+YHjA9YHrA9IDpAdMDpgdMD5geTA+YHjA9YHrA9IDpAdMDpgdMD5geMD1gesD0YHrA9IDpAdMDpgdMD5geMD1gesD0gOkB0wOmB0wPpgdMD5geMD1gesD0gOkB0wOmB0wPmB4wPWB6ML3pwfSA6QHTA6YHTA+YHjA9YHrA9IDpAdMDpgdMD6YHTA+YHjA9YHrA9IDpAdMDpgdMD5geMD1gesD0YHrA9IDpAdMDpgdMD5geMD1gesD0gOkB0wOmB9MDpgdMD5geMD1gesD0gOkB0wOmB0wPmB4wPWB6MD1gesD0gOkB0wOmB0wPmB4wPWB6wPSA6QHTg+lFANMDpgdMD5geMD1gesD0gOkB0wOmB0wPmB4wPZgeMD1gesD0gOkB0wOmB0wPmB4wPWB6wPSA6QHTg+kB0wOmB0wPmB4wPWB6wPSA6QHTA6YHTA+YHkwPmB4wPWB6wPSA6QHTA6YHTA+YHjA9YHrA9IDpwfSA6QHTA6YHTA+YHjA9YHrA9IDpAdMDpgdMD6YHTA+YHjA9YHrA9IDpAdMDpgdMD5geMD1gesD0YHrA9IDpAdMDpgdMD5geMD1gesD0gOkB0wOmB9ObHkwPmB4wPWB6wPSA6QHTA6YHTA+YHjA9YHrA9GB6wPSA6QHTA6YHTA+YHjA9YHrA9IDpAdMDpgdMD6YHTA+YHjA9YHrA9IDpAdMDpgdMD5geMD1gejA9YHrA9IDpAdMDpgdMD5geMD1gesD0gOkB0wOmB9MDpgdMD5geMD1gesD0gOkB0wOmB0wPmB4wPZgeMD1gesD0gOkB0wOmB0wPmB4wPWB6wPSA6QHTg+kB0wPXLHr1CPiJtEGaAAAAAElFTkSuQmCC"
@@ -136,7 +164,8 @@
           </a>
           <a href="#" class="w-full tracking-tighter block mb-2">
             <strong class="text-md ont-extrabold"
-              >HSV Classic GTSR <br>Tee Grey</strong
+              >HSV Classic GTSR <br>
+              Tee Grey</strong
             >
           </a>
           <span class="on-sale absolute left-0 top-0 w-1/4 bg-primary text-white text-center">
@@ -169,6 +198,11 @@
       "type": "text",
       "id": "heading",
       "label": "Heading"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
     },
     {
       "type": "radio",
