@@ -13,183 +13,81 @@
   {% assign pc_items = section.settings.pc %}
 {% endif %}
 
-
-<section
-  id="collection-products-section-{{ section.id }}"
-  class="container pt-10 py-4"
->
-  <div class="container">
-    <{{ section.settings.heading-tag }} class="mb-5 md:mb-10 tracking-tighter text-center uppercase text-primary text-xl md:text-5xl font-extrabold">
-      {{- section.settings.heading -}}
-    </{{ section.settings.heading-tag }}>
-    <div
-      class="owl-carousel owl-theme"
-      data-items-xs="1"
-      data-items-md="{{ mobile_items }}"
-      data-items-lg="{{ tablet_items }}"
-      data-items-xl="{{ pc_items }}"
-      data-margin="32"
-      data-dots="false"
-    >
-      <div data-mh class="productItemWrap">
-        <div
-          data-mh
-          class="productItem border border-lgray p-5 hover:shadow-2xl"
-        >
-          <a href="#">
-            <img
-              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfoAAAH6CAQAAABFHEbCAAAETUlEQVR42u3TAQ0AAAjDMO7fEhIQhQ9oJSxZegp4JKYH0wOmB0wPmB4wPWB6wPSA6QHTA6YHTA+YHjA9mB4wPWB6wPSA6QHTA6YHTA+YHjA9YHrA9IDpAdOD6QHTA6YHTA+YHjA9YHrA9IDpAdMDpgdMD5geTA+YHjA9YHrA9IDpAdMDpgdMD5geMD1gesD0gOnB9IDpAdMDpgdMD5geMD1gesD0gOkB0wOmB0wPphcBTA+YHjA9YHrA9IDpAdMDpgdMD5geMD1gesD0YHrA9IDpAdMDpgdMD5geMD1gesD0gOkB0wOmB0wPpgdMD5geMD1gesD0gOkB0wOmB0wPmB4wPWB6MD1gesD0gOkB0wOmB0wPmB4wPWB6wPSA6QHTA6YH0wOmB0wPmB4wPWB6wPSA6QHTA6YHTA+YHjA9mB4wPWB6wPSA6QHTA6YHTA+YHjA9YHrA9IDpAdOD6QHTA6YHTA+YHjA9YHrA9IDpAdMDpgdMD5geTG96MD1gesD0gOkB0wOmB0wPmB4wPWB6wPSA6QHTg+kB0wOmB0wPmB4wPWB6wPSA6QHTA6YHTA+YHjA9mB4wPWB6wPSA6QHTA6YHTA+YHjA9YHrA9IDpwfSA6QHTA6YHTA+YHjA9YHrA9IDpAdMDpgdMD5geTA+YHjA9YHrA9IDpAdMDpgdMD5geMD1gesD0YHrA9IDpAdMDpgdMD5geMD1gesD0gOkB0wOmB0wPpgdMD5geMD1gesD0gOkB0wOmB0wPmB4wPWB6ML3pwfSA6QHTA6YHTA+YHjA9YHrA9IDpAdMDpgdMD6YHTA+YHjA9YHrA9IDpAdMDpgdMD5geMD1gesD0YHrA9IDpAdMDpgdMD5geMD1gesD0gOkB0wOmB9MDpgdMD5geMD1gesD0gOkB0wOmB0wPmB4wPWB6MD1gesD0gOkB0wOmB0wPmB4wPWB6wPSA6QHTg+lFANMDpgdMD5geMD1gesD0gOkB0wOmB0wPmB4wPZgeMD1gesD0gOkB0wOmB0wPmB4wPWB6wPSA6QHTg+kB0wOmB0wPmB4wPWB6wPSA6QHTA6YHTA+YHkwPmB4wPWB6wPSA6QHTA6YHTA+YHjA9YHrA9IDpwfSA6QHTA6YHTA+YHjA9YHrA9IDpAdMDpgdMD6YHTA+YHjA9YHrA9IDpAdMDpgdMD5geMD1gesD0YHrA9IDpAdMDpgdMD5geMD1gesD0gOkB0wOmB9ObHkwPmB4wPWB6wPSA6QHTA6YHTA+YHjA9YHrA9GB6wPSA6QHTA6YHTA+YHjA9YHrA9IDpAdMDpgdMD6YHTA+YHjA9YHrA9IDpAdMDpgdMD5geMD1gejA9YHrA9IDpAdMDpgdMD5geMD1gesD0gOkB0wOmB9MDpgdMD5geMD1gesD0gOkB0wOmB0wPmB4wPZgeMD1gesD0gOkB0wOmB0wPmB4wPWB6wPSA6QHTg+kB0wPXLHr1CPiJtEGaAAAAAElFTkSuQmCC"
-              data-src="https://d10wbd1yn4402f.cloudfront.net/media/catalog/product//c/a/castrol_cap_fronta2_1.jpg"
-              height="506"
-              width="506"
-              class="lazy"
+{% if section.settings.collection != blank %}
+  <section
+    id="collection-products-section-{{ section.id }}"
+    class="container pt-10 py-4"
+  >
+    <div class="container">
+      <{{ section.settings.heading-tag }} class="mb-5 md:mb-10 tracking-tighter text-center uppercase text-primary text-xl md:text-5xl font-extrabold">
+        {{- section.settings.heading -}}
+      </{{ section.settings.heading-tag }}>
+      <div
+        class="owl-carousel owl-theme"
+        data-items-xs="1"
+        data-items-md="{{ mobile_items }}"
+        data-items-lg="{{ tablet_items }}"
+        data-items-xl="{{ pc_items }}"
+        data-margin="32"
+        data-dots="false"
+      >
+        {% for product in collections[section.settings.collection].products  limit:16 %}
+          {% assign image = product.featured_media.preview_image %}
+          {% assign lowest_price = product.first_available_variant.price %}
+          {% for variant in product.variants %}
+            {% if variant.available %}
+              {% if variant.price < lowest_price %}
+                {% assign lowest_price = variant.price %}
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+          {% if lowest_price == blank %}
+            {% assign lowest_price = product.price %}
+            {% endif %}
+          <div data-mh class="productItemWrap">
+            {{ lowest_price | json }}
+            <div
+              data-mh
+              class="productItem border border-lgray p-5 hover:shadow-2xl"
             >
-          </a>
-          <a href="#" class="w-full tracking-tighter block mb-2">
-            <strong class="text-md ont-extrabold"
-              >Castrol Racing Team Cap [OSFM]</strong
-            >
-          </a>
-          <span class="on-sale absolute left-0 top-0 w-1/4 bg-primary text-white text-center">
-            -70%
-          </span>
-          <div class="product-price flex justify-between">
-            <p class="sale-price">
-              <span>Now: </span>
-              <strong class="text-primary text-lg font-extrabold"
-                >$10.50</strong
-              >
-            </p>
-            <p class="was-price">
-              <span>Was: </span>
-              <strong class="text-sgray text-lg font-extrabold line-through"
-                >$10.50</strong
-              >
-            </p>
+              <a href="#">
+                <img
+                  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfoAAAH6CAQAAABFHEbCAAAETUlEQVR42u3TAQ0AAAjDMO7fEhIQhQ9oJSxZegp4JKYH0wOmB0wPmB4wPWB6wPSA6QHTA6YHTA+YHjA9mB4wPWB6wPSA6QHTA6YHTA+YHjA9YHrA9IDpAdOD6QHTA6YHTA+YHjA9YHrA9IDpAdMDpgdMD5geTA+YHjA9YHrA9IDpAdMDpgdMD5geMD1gesD0gOnB9IDpAdMDpgdMD5geMD1gesD0gOkB0wOmB0wPphcBTA+YHjA9YHrA9IDpAdMDpgdMD5geMD1gesD0YHrA9IDpAdMDpgdMD5geMD1gesD0gOkB0wOmB0wPpgdMD5geMD1gesD0gOkB0wOmB0wPmB4wPWB6MD1gesD0gOkB0wOmB0wPmB4wPWB6wPSA6QHTA6YH0wOmB0wPmB4wPWB6wPSA6QHTA6YHTA+YHjA9mB4wPWB6wPSA6QHTA6YHTA+YHjA9YHrA9IDpAdOD6QHTA6YHTA+YHjA9YHrA9IDpAdMDpgdMD5geTG96MD1gesD0gOkB0wOmB0wPmB4wPWB6wPSA6QHTg+kB0wOmB0wPmB4wPWB6wPSA6QHTA6YHTA+YHjA9mB4wPWB6wPSA6QHTA6YHTA+YHjA9YHrA9IDpwfSA6QHTA6YHTA+YHjA9YHrA9IDpAdMDpgdMD5geTA+YHjA9YHrA9IDpAdMDpgdMD5geMD1gesD0YHrA9IDpAdMDpgdMD5geMD1gesD0gOkB0wOmB0wPpgdMD5geMD1gesD0gOkB0wOmB0wPmB4wPWB6ML3pwfSA6QHTA6YHTA+YHjA9YHrA9IDpAdMDpgdMD6YHTA+YHjA9YHrA9IDpAdMDpgdMD5geMD1gesD0YHrA9IDpAdMDpgdMD5geMD1gesD0gOkB0wOmB9MDpgdMD5geMD1gesD0gOkB0wOmB0wPmB4wPWB6MD1gesD0gOkB0wOmB0wPmB4wPWB6wPSA6QHTg+lFANMDpgdMD5geMD1gesD0gOkB0wOmB0wPmB4wPZgeMD1gesD0gOkB0wOmB0wPmB4wPWB6wPSA6QHTg+kB0wOmB0wPmB4wPWB6wPSA6QHTA6YHTA+YHkwPmB4wPWB6wPSA6QHTA6YHTA+YHjA9YHrA9IDpwfSA6QHTA6YHTA+YHjA9YHrA9IDpAdMDpgdMD6YHTA+YHjA9YHrA9IDpAdMDpgdMD5geMD1gesD0YHrA9IDpAdMDpgdMD5geMD1gesD0gOkB0wOmB9ObHkwPmB4wPWB6wPSA6QHTA6YHTA+YHjA9YHrA9GB6wPSA6QHTA6YHTA+YHjA9YHrA9IDpAdMDpgdMD6YHTA+YHjA9YHrA9IDpAdMDpgdMD5geMD1gejA9YHrA9IDpAdMDpgdMD5geMD1gesD0gOkB0wOmB9MDpgdMD5geMD1gesD0gOkB0wOmB0wPmB4wPZgeMD1gesD0gOkB0wOmB0wPmB4wPWB6wPSA6QHTg+kB0wPXLHr1CPiJtEGaAAAAAElFTkSuQmCC"
+                  data-src="{{ image | img_url: 'medium' }}"
+                  height="506"
+                  width="506"
+                  class="lazy"
+                >
+              </a>
+              <a href="#" class="w-full tracking-tighter block mb-2">
+                <strong class="text-md ont-extrabold">
+                  {{- product.title | link_to: product.url -}}
+                </strong>
+              </a>
+              <span class="on-sale absolute left-0 top-0 w-1/4 bg-primary text-white text-center">
+                -70%
+              </span>
+              <div class="product-price flex justify-between">
+                <p class="sale-price">
+                  <span>Now: </span>
+                  <strong class="text-primary text-lg font-extrabold">
+                    {{- lowest_price | money}}
+                  </strong>
+                </p>
+                <p class="was-price">
+                  <span>Was: </span>
+                  <strong class="text-sgray text-lg font-extrabold line-through"
+                    >{{product.price_max}}</strong
+                  >
+                </p>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-
-      <div data-mh class="productItemWrap">
-        <div
-          data-mh
-          class="productItem border border-lgray p-5 hover:shadow-md"
-        >
-          <a href="#">
-            <img
-              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfoAAAH6CAQAAABFHEbCAAAETUlEQVR42u3TAQ0AAAjDMO7fEhIQhQ9oJSxZegp4JKYH0wOmB0wPmB4wPWB6wPSA6QHTA6YHTA+YHjA9mB4wPWB6wPSA6QHTA6YHTA+YHjA9YHrA9IDpAdOD6QHTA6YHTA+YHjA9YHrA9IDpAdMDpgdMD5geTA+YHjA9YHrA9IDpAdMDpgdMD5geMD1gesD0gOnB9IDpAdMDpgdMD5geMD1gesD0gOkB0wOmB0wPphcBTA+YHjA9YHrA9IDpAdMDpgdMD5geMD1gesD0YHrA9IDpAdMDpgdMD5geMD1gesD0gOkB0wOmB0wPpgdMD5geMD1gesD0gOkB0wOmB0wPmB4wPWB6MD1gesD0gOkB0wOmB0wPmB4wPWB6wPSA6QHTA6YH0wOmB0wPmB4wPWB6wPSA6QHTA6YHTA+YHjA9mB4wPWB6wPSA6QHTA6YHTA+YHjA9YHrA9IDpAdOD6QHTA6YHTA+YHjA9YHrA9IDpAdMDpgdMD5geTG96MD1gesD0gOkB0wOmB0wPmB4wPWB6wPSA6QHTg+kB0wOmB0wPmB4wPWB6wPSA6QHTA6YHTA+YHjA9mB4wPWB6wPSA6QHTA6YHTA+YHjA9YHrA9IDpwfSA6QHTA6YHTA+YHjA9YHrA9IDpAdMDpgdMD5geTA+YHjA9YHrA9IDpAdMDpgdMD5geMD1gesD0YHrA9IDpAdMDpgdMD5geMD1gesD0gOkB0wOmB0wPpgdMD5geMD1gesD0gOkB0wOmB0wPmB4wPWB6ML3pwfSA6QHTA6YHTA+YHjA9YHrA9IDpAdMDpgdMD6YHTA+YHjA9YHrA9IDpAdMDpgdMD5geMD1gesD0YHrA9IDpAdMDpgdMD5geMD1gesD0gOkB0wOmB9MDpgdMD5geMD1gesD0gOkB0wOmB0wPmB4wPWB6MD1gesD0gOkB0wOmB0wPmB4wPWB6wPSA6QHTg+lFANMDpgdMD5geMD1gesD0gOkB0wOmB0wPmB4wPZgeMD1gesD0gOkB0wOmB0wPmB4wPWB6wPSA6QHTg+kB0wOmB0wPmB4wPWB6wPSA6QHTA6YHTA+YHkwPmB4wPWB6wPSA6QHTA6YHTA+YHjA9YHrA9IDpwfSA6QHTA6YHTA+YHjA9YHrA9IDpAdMDpgdMD6YHTA+YHjA9YHrA9IDpAdMDpgdMD5geMD1gesD0YHrA9IDpAdMDpgdMD5geMD1gesD0gOkB0wOmB9ObHkwPmB4wPWB6wPSA6QHTA6YHTA+YHjA9YHrA9GB6wPSA6QHTA6YHTA+YHjA9YHrA9IDpAdMDpgdMD6YHTA+YHjA9YHrA9IDpAdMDpgdMD5geMD1gejA9YHrA9IDpAdMDpgdMD5geMD1gesD0gOkB0wOmB9MDpgdMD5geMD1gesD0gOkB0wOmB0wPmB4wPZgeMD1gesD0gOkB0wOmB0wPmB4wPWB6wPSA6QHTg+kB0wPXLHr1CPiJtEGaAAAAAElFTkSuQmCC"
-              data-src="https://d10wbd1yn4402f.cloudfront.net/media/catalog/product//m/o/monster-energy-team-pom-pom-beanie_1_1.jpg"
-              height="506"
-              width="506"
-              class="lazy"
-            >
-          </a>
-          <a href="#" class="w-full tracking-tighter block mb-2">
-            <strong class="text-md ont-extrabold"
-              >Monster Energy Pom Pom Beanie [OSFM]</strong
-            >
-          </a>
-          <span class="on-sale absolute left-0 top-0 w-1/4 bg-primary text-white text-center">
-            -70%
-          </span>
-          <div class="product-price flex justify-between">
-            <p class="sale-price">
-              <span>Now: </span>
-              <strong class="text-primary text-lg font-extrabold"
-                >$9.00</strong
-              >
-            </p>
-            <p class="was-price">
-              <span>Was: </span>
-              <strong class="text-sgray text-lg font-extrabold line-through"
-                >$30.00</strong
-              >
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div data-mh class="productItemWrap">
-        <div
-          data-mh
-          class="productItem border border-lgray p-5 hover:shadow-md"
-        >
-          <a href="#">
-            <img
-              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfoAAAH6CAQAAABFHEbCAAAETUlEQVR42u3TAQ0AAAjDMO7fEhIQhQ9oJSxZegp4JKYH0wOmB0wPmB4wPWB6wPSA6QHTA6YHTA+YHjA9mB4wPWB6wPSA6QHTA6YHTA+YHjA9YHrA9IDpAdOD6QHTA6YHTA+YHjA9YHrA9IDpAdMDpgdMD5geTA+YHjA9YHrA9IDpAdMDpgdMD5geMD1gesD0gOnB9IDpAdMDpgdMD5geMD1gesD0gOkB0wOmB0wPphcBTA+YHjA9YHrA9IDpAdMDpgdMD5geMD1gesD0YHrA9IDpAdMDpgdMD5geMD1gesD0gOkB0wOmB0wPpgdMD5geMD1gesD0gOkB0wOmB0wPmB4wPWB6MD1gesD0gOkB0wOmB0wPmB4wPWB6wPSA6QHTA6YH0wOmB0wPmB4wPWB6wPSA6QHTA6YHTA+YHjA9mB4wPWB6wPSA6QHTA6YHTA+YHjA9YHrA9IDpAdOD6QHTA6YHTA+YHjA9YHrA9IDpAdMDpgdMD5geTG96MD1gesD0gOkB0wOmB0wPmB4wPWB6wPSA6QHTg+kB0wOmB0wPmB4wPWB6wPSA6QHTA6YHTA+YHjA9mB4wPWB6wPSA6QHTA6YHTA+YHjA9YHrA9IDpwfSA6QHTA6YHTA+YHjA9YHrA9IDpAdMDpgdMD5geTA+YHjA9YHrA9IDpAdMDpgdMD5geMD1gesD0YHrA9IDpAdMDpgdMD5geMD1gesD0gOkB0wOmB0wPpgdMD5geMD1gesD0gOkB0wOmB0wPmB4wPWB6ML3pwfSA6QHTA6YHTA+YHjA9YHrA9IDpAdMDpgdMD6YHTA+YHjA9YHrA9IDpAdMDpgdMD5geMD1gesD0YHrA9IDpAdMDpgdMD5geMD1gesD0gOkB0wOmB9MDpgdMD5geMD1gesD0gOkB0wOmB0wPmB4wPWB6MD1gesD0gOkB0wOmB0wPmB4wPWB6wPSA6QHTg+lFANMDpgdMD5geMD1gesD0gOkB0wOmB0wPmB4wPZgeMD1gesD0gOkB0wOmB0wPmB4wPWB6wPSA6QHTg+kB0wOmB0wPmB4wPWB6wPSA6QHTA6YHTA+YHkwPmB4wPWB6wPSA6QHTA6YHTA+YHjA9YHrA9IDpwfSA6QHTA6YHTA+YHjA9YHrA9IDpAdMDpgdMD6YHTA+YHjA9YHrA9IDpAdMDpgdMD5geMD1gesD0YHrA9IDpAdMDpgdMD5geMD1gesD0gOkB0wOmB9ObHkwPmB4wPWB6wPSA6QHTA6YHTA+YHjA9YHrA9GB6wPSA6QHTA6YHTA+YHjA9YHrA9IDpAdMDpgdMD6YHTA+YHjA9YHrA9IDpAdMDpgdMD5geMD1gejA9YHrA9IDpAdMDpgdMD5geMD1gesD0gOkB0wOmB9MDpgdMD5geMD1gesD0gOkB0wOmB0wPmB4wPZgeMD1gesD0gOkB0wOmB0wPmB4wPWB6wPSA6QHTg+kB0wPXLHr1CPiJtEGaAAAAAElFTkSuQmCC"
-              data-src="https://d10wbd1yn4402f.cloudfront.net/media/catalog/product//c/r/craig_lowndes_signature_series_cap_cl_1_1.jpg"
-              height="506"
-              width="506"
-              class="lazy"
-            >
-          </a>
-          <a href="#" class="w-full tracking-tighter block mb-2">
-            <strong class="text-md ont-extrabold"
-              >Craig Lowndes Signature Series Cap [OSFM]</strong
-            >
-          </a>
-          <span class="on-sale absolute left-0 top-0 w-1/4 bg-primary text-white text-center">
-            -70%
-          </span>
-          <div class="product-price flex justify-between">
-            <p class="sale-price">
-              <span>Now: </span>
-              <strong class="text-primary text-lg font-extrabold"
-                >$12.00</strong
-              >
-            </p>
-            <p class="was-price">
-              <span>Was: </span>
-              <strong class="text-sgray text-lg font-extrabold line-through"
-                >$40.00</strong
-              >
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div data-mh class="productItemWrap">
-        <div
-          data-mh
-          class="productItem border border-lgray p-5 hover:shadow-md"
-        >
-          <a href="#">
-            <img
-              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfoAAAH6CAQAAABFHEbCAAAETUlEQVR42u3TAQ0AAAjDMO7fEhIQhQ9oJSxZegp4JKYH0wOmB0wPmB4wPWB6wPSA6QHTA6YHTA+YHjA9mB4wPWB6wPSA6QHTA6YHTA+YHjA9YHrA9IDpAdOD6QHTA6YHTA+YHjA9YHrA9IDpAdMDpgdMD5geTA+YHjA9YHrA9IDpAdMDpgdMD5geMD1gesD0gOnB9IDpAdMDpgdMD5geMD1gesD0gOkB0wOmB0wPphcBTA+YHjA9YHrA9IDpAdMDpgdMD5geMD1gesD0YHrA9IDpAdMDpgdMD5geMD1gesD0gOkB0wOmB0wPpgdMD5geMD1gesD0gOkB0wOmB0wPmB4wPWB6MD1gesD0gOkB0wOmB0wPmB4wPWB6wPSA6QHTA6YH0wOmB0wPmB4wPWB6wPSA6QHTA6YHTA+YHjA9mB4wPWB6wPSA6QHTA6YHTA+YHjA9YHrA9IDpAdOD6QHTA6YHTA+YHjA9YHrA9IDpAdMDpgdMD5geTG96MD1gesD0gOkB0wOmB0wPmB4wPWB6wPSA6QHTg+kB0wOmB0wPmB4wPWB6wPSA6QHTA6YHTA+YHjA9mB4wPWB6wPSA6QHTA6YHTA+YHjA9YHrA9IDpwfSA6QHTA6YHTA+YHjA9YHrA9IDpAdMDpgdMD5geTA+YHjA9YHrA9IDpAdMDpgdMD5geMD1gesD0YHrA9IDpAdMDpgdMD5geMD1gesD0gOkB0wOmB0wPpgdMD5geMD1gesD0gOkB0wOmB0wPmB4wPWB6ML3pwfSA6QHTA6YHTA+YHjA9YHrA9IDpAdMDpgdMD6YHTA+YHjA9YHrA9IDpAdMDpgdMD5geMD1gesD0YHrA9IDpAdMDpgdMD5geMD1gesD0gOkB0wOmB9MDpgdMD5geMD1gesD0gOkB0wOmB0wPmB4wPWB6MD1gesD0gOkB0wOmB0wPmB4wPWB6wPSA6QHTg+lFANMDpgdMD5geMD1gesD0gOkB0wOmB0wPmB4wPZgeMD1gesD0gOkB0wOmB0wPmB4wPWB6wPSA6QHTg+kB0wOmB0wPmB4wPWB6wPSA6QHTA6YHTA+YHkwPmB4wPWB6wPSA6QHTA6YHTA+YHjA9YHrA9IDpwfSA6QHTA6YHTA+YHjA9YHrA9IDpAdMDpgdMD6YHTA+YHjA9YHrA9IDpAdMDpgdMD5geMD1gesD0YHrA9IDpAdMDpgdMD5geMD1gesD0gOkB0wOmB9ObHkwPmB4wPWB6wPSA6QHTA6YHTA+YHjA9YHrA9GB6wPSA6QHTA6YHTA+YHjA9YHrA9IDpAdMDpgdMD6YHTA+YHjA9YHrA9IDpAdMDpgdMD5geMD1gejA9YHrA9IDpAdMDpgdMD5geMD1gesD0gOkB0wOmB9MDpgdMD5geMD1gesD0gOkB0wOmB0wPmB4wPZgeMD1gesD0gOkB0wOmB0wPmB4wPWB6wPSA6QHTg+kB0wPXLHr1CPiJtEGaAAAAAElFTkSuQmCC"
-              data-src="https://d10wbd1yn4402f.cloudfront.net/media/catalog/product//h/s/hsv_classic_gtsr_tee_grey.jpg"
-              height="506"
-              width="506"
-              class="lazy"
-            >
-          </a>
-          <a href="#" class="w-full tracking-tighter block mb-2">
-            <strong class="text-md ont-extrabold"
-              >HSV Classic GTSR <br>
-              Tee Grey</strong
-            >
-          </a>
-          <span class="on-sale absolute left-0 top-0 w-1/4 bg-primary text-white text-center">
-            -70%
-          </span>
-          <div class="product-price flex justify-between">
-            <p class="sale-price">
-              <span>Now: </span>
-              <strong class="text-primary text-lg font-extrabold"
-                >$18.00</strong
-              >
-            </p>
-            <p class="was-price">
-              <span>Was: </span>
-              <strong class="text-sgray text-lg font-extrabold line-through"
-                >$45.00</strong
-              >
-            </p>
-          </div>
-        </div>
+        {% endfor %}
       </div>
     </div>
-  </div>
-</section>
+  </section>
+{% endif %}
 {% schema %}
 {
   "name": "Collection Products",
