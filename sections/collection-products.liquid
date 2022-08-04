@@ -71,15 +71,17 @@
                 <p class="sale-price">
                   <span>Now: </span>
                   <strong class="text-primary text-lg font-extrabold">
-                    {{- lowest_price | money}}
+                    {{- product.compare_at_price_min | money}}
                   </strong>
                 </p>
+                {% if product.price_min < product.price_max %}
                 <p class="was-price">
                   <span>Was: </span>
                   <strong class="text-sgray text-lg font-extrabold line-through"
-                    >{{product.price_max}}</strong
+                    >{{product.price_max | money}}</strong
                   >
                 </p>
+              {% endif %}
               </div>
             </div>
           </div>
