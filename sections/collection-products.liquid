@@ -45,7 +45,6 @@
             {% assign lowest_price = product.price %}
             {% endif %}
           <div data-mh class="productItemWrap">
-            {{ lowest_price | json }}
             <div
               data-mh
               class="productItem border border-lgray p-5 hover:shadow-2xl"
@@ -64,21 +63,23 @@
                   {{- product.title | link_to: product.url -}}
                 </strong>
               </a>
-              <span class="on-sale absolute left-0 top-0 w-1/4 bg-primary text-white text-center">
-                -70%
-              </span>
+              {% if product.compare_at_price_max > product.price %}
+                <span class="on-sale absolute left-0 top-0 w-1/4 bg-primary text-white text-center">
+                  {{ product.compare_at_price_max | minus: product.price | times: 100.0 | divided_by: product.compare_at_price_max | money_without_currency | times: 100 | remove: '.0'}}% off
+                </span>  
+              {% endif %}
               <div class="product-price flex justify-between">
                 <p class="sale-price">
                   <span>Now: </span>
                   <strong class="text-primary text-lg font-extrabold">
-                    {{- product.compare_at_price_min | money}}
+                    {{- product.price_min | money}}
                   </strong>
                 </p>
-                {% if product.price_min < product.price_max %}
+                {% if product.price_min < product.compare_at_price_max %}
                 <p class="was-price">
                   <span>Was: </span>
                   <strong class="text-sgray text-lg font-extrabold line-through"
-                    >{{product.price_max | money}}</strong
+                    >{{product.compare_at_price_max | money}}</strong
                   >
                 </p>
               {% endif %}
