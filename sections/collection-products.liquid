@@ -46,10 +46,9 @@
             {% endif %}
           <div data-mh class="productItemWrap">
             <div
-              data-mh
               class="productItem border border-lgray p-5 hover:shadow-2xl"
             >
-              <a href="#">
+              <a href="{{ product.url }}">
                 <img
                   src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfoAAAH6CAQAAABFHEbCAAAETUlEQVR42u3TAQ0AAAjDMO7fEhIQhQ9oJSxZegp4JKYH0wOmB0wPmB4wPWB6wPSA6QHTA6YHTA+YHjA9mB4wPWB6wPSA6QHTA6YHTA+YHjA9YHrA9IDpAdOD6QHTA6YHTA+YHjA9YHrA9IDpAdMDpgdMD5geTA+YHjA9YHrA9IDpAdMDpgdMD5geMD1gesD0gOnB9IDpAdMDpgdMD5geMD1gesD0gOkB0wOmB0wPphcBTA+YHjA9YHrA9IDpAdMDpgdMD5geMD1gesD0YHrA9IDpAdMDpgdMD5geMD1gesD0gOkB0wOmB0wPpgdMD5geMD1gesD0gOkB0wOmB0wPmB4wPWB6MD1gesD0gOkB0wOmB0wPmB4wPWB6wPSA6QHTA6YH0wOmB0wPmB4wPWB6wPSA6QHTA6YHTA+YHjA9mB4wPWB6wPSA6QHTA6YHTA+YHjA9YHrA9IDpAdOD6QHTA6YHTA+YHjA9YHrA9IDpAdMDpgdMD5geTG96MD1gesD0gOkB0wOmB0wPmB4wPWB6wPSA6QHTg+kB0wOmB0wPmB4wPWB6wPSA6QHTA6YHTA+YHjA9mB4wPWB6wPSA6QHTA6YHTA+YHjA9YHrA9IDpwfSA6QHTA6YHTA+YHjA9YHrA9IDpAdMDpgdMD5geTA+YHjA9YHrA9IDpAdMDpgdMD5geMD1gesD0YHrA9IDpAdMDpgdMD5geMD1gesD0gOkB0wOmB0wPpgdMD5geMD1gesD0gOkB0wOmB0wPmB4wPWB6ML3pwfSA6QHTA6YHTA+YHjA9YHrA9IDpAdMDpgdMD6YHTA+YHjA9YHrA9IDpAdMDpgdMD5geMD1gesD0YHrA9IDpAdMDpgdMD5geMD1gesD0gOkB0wOmB9MDpgdMD5geMD1gesD0gOkB0wOmB0wPmB4wPWB6MD1gesD0gOkB0wOmB0wPmB4wPWB6wPSA6QHTg+lFANMDpgdMD5geMD1gesD0gOkB0wOmB0wPmB4wPZgeMD1gesD0gOkB0wOmB0wPmB4wPWB6wPSA6QHTg+kB0wOmB0wPmB4wPWB6wPSA6QHTA6YHTA+YHkwPmB4wPWB6wPSA6QHTA6YHTA+YHjA9YHrA9IDpwfSA6QHTA6YHTA+YHjA9YHrA9IDpAdMDpgdMD6YHTA+YHjA9YHrA9IDpAdMDpgdMD5geMD1gesD0YHrA9IDpAdMDpgdMD5geMD1gesD0gOkB0wOmB9ObHkwPmB4wPWB6wPSA6QHTA6YHTA+YHjA9YHrA9GB6wPSA6QHTA6YHTA+YHjA9YHrA9IDpAdMDpgdMD6YHTA+YHjA9YHrA9IDpAdMDpgdMD5geMD1gejA9YHrA9IDpAdMDpgdMD5geMD1gesD0gOkB0wOmB9MDpgdMD5geMD1gesD0gOkB0wOmB0wPmB4wPZgeMD1gesD0gOkB0wOmB0wPmB4wPWB6wPSA6QHTg+kB0wPXLHr1CPiJtEGaAAAAAElFTkSuQmCC"
                   data-src="{{ image | img_url: 'medium' }}"
@@ -58,7 +57,7 @@
                   class="lazy"
                 >
               </a>
-              <a href="#" class="w-full tracking-tighter block mb-2">
+              <a href="{{ product.url }}" class="w-full tracking-tighter block mb-2">
                 <strong class="text-md ont-extrabold">
                   {{- product.title | link_to: product.url -}}
                 </strong>

@@ -107,6 +107,8 @@
         </div>
     </div>
 </header>
+
+{% if template.name == "index" %} 
 <figure class="text-center py-2  flex justify-center">
     <img 
         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAACZMAAAAXCAQAAADegIvVAAAArklEQVR42u3YAQEAIAzAoL1/JSM8lPYQYjBnAwAAAIDPjSYDAAAAAE0GAAAAAJoMAAAAADQZAAAAAKTJAAAAACBNBgAAAABpMgAAAABIkwEAAABAmgwAAAAA0mQAAAAAkCYDAAAAgDQZAAAAAKTJAAAAACBNBgAAAABpMgAAAABIkwEAAABAmgwAAAAA0mQAAAAAkCYDAAAAgDQZAAAAAKTJAAAAACBNBgAAAADPBUcLI1AQgqE2AAAAAElFTkSuQmCC" 
@@ -115,6 +117,7 @@
         width="245" height="23" 
         alt="Afterpay"/>
 </figure>
+{% endif %}
 {% schema %}
 {
     "name": "t:sections.header.name",

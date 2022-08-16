@@ -3,14 +3,18 @@
 @tailwind utilities;
 :root {
   --primary: #f05214;
+  --actived: rgb(91, 185, 0);
+  --sub: rgb(187, 187, 187);
   --sgray: #717171;
   --lgray: #e6e6e6;
+  --lgray2: #f7f7f7;
   --gray: #495057;
-  --white: #FFF;
+  --gray2: #e8e8e8;
   --black: #000;
   --yellow: #fc3;
   --dot-defautl: #3e4d65;
   --dot-actived: #FFF;
+  --white: #FFFFFF;
 }
 // @import "./base/font";
 @import "../../node_modules/normalize.css/normalize.css";
@@ -30,6 +34,36 @@ body{
     padding-top: 89px;
     padding-bottom: 44px;
   }
+}
+@layer base {
+  h1, .h1{
+    @apply text-4xl;
+    @apply font-extrabold;
+  }
+  h2, .h2 {
+    @apply text-3xl;
+    @apply font-bold;
+  }
+  h3, .h3 {
+    @apply text-2xl;
+    @apply font-semibold;
+  }
+  h4, .h4{
+    @apply text-xl;
+    @apply font-semibold;
+  }
+  h5, .h5{
+    @apply text-lg;
+    @apply font-semibold;
+  }
+  table{
+    @apply mt-5;
+    td{
+      @apply px-5;
+      @apply py-3;
+    }
+  }
+  /* ... */
 }
 // @import "./layouts/footer";
 // // Components

@@ -22,6 +22,8 @@ module.exports = {
     extend:{
       colors: {
         primary : "var(--primary)",
+        actived : "var(--actived)",
+        sub: "var(--sub)",
         sgray: "var(--sgray)",
         lgray: "var(--lgray)",
       }

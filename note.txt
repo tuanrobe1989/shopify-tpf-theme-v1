@@ -4,3 +4,88 @@ https://www.shopify.com/partners/shopify-cheat-sheet?shpxid=a3d84bd0-DAEC-4507-F
 https://webpack.js.org/plugins/
 https://www.pace.edu.vn/
 https://png-pixel.com/
+
+
+
+ {%- if product.selected_or_first_available_variant.featured_media != null -%}
+    {%- assign featured_media = product.selected_or_first_available_variant.featured_media -%}
+
+  {%- endif -%}
+
+
+
+        <select
+        name="id"
+        id="ProductSelect-{{ section.id }}"
+        class="product-form__variants no-js"
+      >
+        {% for variant in product.variants %}
+          {% if variant.available %}
+            <option
+              {% if variant == product.selected_or_first_available_variant %}
+                selected="selected"
+              {% endif %}
+              value="{{ variant.id }}"
+            >
+              {{ variant.title }}
+            </option>
+          {% else %}
+            <option disabled="disabled">
+              {{ variant.title }} - {{ 'products.product.sold_out' | t }}
+            </option>
+          {% endif %}
+        {% endfor %}
+      </select>
+
+
+// CHECK IN STOCK
+<div id="variant-inventory" class="{% unless current_variant.available %} hide {% endunless %}">
+    {% if current_variant.inventory_management == "shopify" and current_variant.inventory_policy != "continue" %}
+    We have {{ current_variant.inventory_quantity }} in stock.
+    {% else %}
+    This product is available.
+    {% endif %}
+</div> 
+
+
+
+{%- if product.selected_or_first_available_variant.featured_media != null -%}
+
+{% comment %} {%- endif -%} {% endcomment %}
+
+
+{% case option_type %}
+              {% comment %} VARIANT COLOR {% endcomment %}
+            {% when "color", %}
+              <select
+                id="sProduct__choose-{{ forloop.index0 }}"
+                data-index="option{{ forloop.index }}"
+              >
+                {%- for value in option.values -%}
+                  <option
+                    value="{{ value | escape }}"
+                    {% if option.selected_value == value %}
+                      selected="selected"
+                    {% endif %}
+                    data-var="{{forloop.index}}"
+                  >
+                    {{ value | escape }}
+                  </option>
+                {%- endfor -%}
+              </select>
+            {% else %}
+              {% comment %} VARIANT SIZE {% endcomment %}
+              {%- for value in option.values -%}
+                <span class="sProduct__select sProduct__radio">
+                  <input
+                    type="radio"
+                    name="{{ option.name }}"
+                    value="{{ value | escape }}"
+                    {% if option.selected_value == value %}
+                      checked
+                    {% endif %}
+                  >
+                  <label>{{ value | escape }}</label>
+                </span>
+              {%- endfor -%}
+          {% endcase %}

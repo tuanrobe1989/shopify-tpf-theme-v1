@@ -21,10 +21,25 @@ img.loaded,
 img.error {
     opacity: 1;
 }
+/*
+    TABLES
+*/
+table{
+    width: 100%;
+    tr{
+        &:nth-child(odd){
+            background: var(--lgray2);
+        }
+        &:nth-child(even){
+            background: var(--gray2);
+        }
+    }
+}
 
 /*
     CUSTOM CAROUSELS
 */
+
 .dots-bottom {
     &.dot-square {
         .owl-dots {
@@ -40,7 +55,7 @@ img.error {
         position: absolute;
         bottom: 0;
         left: 50%;
-        transform: translate(0, -50%);
+        transform: translate(-50%, -50%);
 
         .owl-dot.active span {
             background-color: var(--dot-actived) !important;
@@ -51,6 +66,22 @@ img.error {
         }
     }
 }
+
+.owl-carousel[data-actived-dot="primary"]{
+    .owl-dot.active{
+        span{
+            background-color: var(--primary) !important;
+        }
+    }
+}
+.owl-carousel[data-hidden-dots="true"]{
+    .owl-dots {
+        opacity: 0;
+        position: absolute;
+    }
+}
+
+
 
 .hover_image_zoom {
     transition: 0.3s all linear;
@@ -86,5 +117,16 @@ img.error {
     &::after {
         bottom: 1px;
         right: 1rem;
+    }
+}
+
+/*
+    BREADCUMBS
+*/
+.breadcrumb{
+    span{
+        &:last-child{
+            color: var(--sub);
+        }
     }
 }

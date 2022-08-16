@@ -1,4 +1,3 @@
-import './styles/index.scss';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 import 'owl.carousel';
@@ -6,6 +5,7 @@ import '@fortawesome/fontawesome-free/js/fontawesome'
 import '@fortawesome/fontawesome-free/js/solid'
 import '@fortawesome/fontawesome-free/js/regular'
 import '@fortawesome/fontawesome-free/js/brands'
+import './styles/index.scss';
 import MatchHeight from 'matchheight';
 import LazyLoad from "vanilla-lazyload";
 // import 'lazysizes';
@@ -104,6 +104,34 @@ tpfObjects.menu = function () {
     })
 }
 
+tpfObjects.singleProductThumb = function(){
+    jQuery('.sProduct__thumb').click(function(){
+        let _this =  jQuery(this);
+        let thumb_index = _this.data('index') - 1;
+        let thumbSelector = _this.closest('.sProduct__thumbs');
+        thumbSelector.find('.sProduct__thumb').each(function(){
+            jQuery(this).removeClass('actived');
+        });
+        _this.addClass('actived');
+        console.log(thumb_index);
+        thumbSelector.find('.owl-dots .owl-dot').eq(thumb_index).addClass('AAAAAA').trigger('click');
+    })
+}
+
+tpfObjects.singleProductVariant = function(){
+    var curVariant = 0;
+    jQuery('input[data-action="product-select"]').change(function(){
+        var curVariant = jQuery(this).filter(':checked');
+        var curVariant_val = curVariant.val();
+        var dataOption = curVariant.data('option');
+        console.log(curVariant_val);
+        console.log(dataOption);
+    })
+    // jQuery('.sProduct__select radio').change(function(){
+    //     curVariant = jQuery(this).filter(':checked').val();
+    //     console.log(curVariant);
+    // })
+}
 
 
 jQuery(document).ready(function ($) {
@@ -113,4 +141,6 @@ jQuery(document).ready(function ($) {
     tpfObjects.faqItem();
     tpfObjects.tabsContent();
     tpfObjects.defaultCarousel();
+    tpfObjects.singleProductThumb();
+    tpfObjects.singleProductVariant();
 });
