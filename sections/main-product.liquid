@@ -1,4 +1,4 @@
-<div class="container">
+<div id="product-handle" product-handle="{{ product.handle }}" class="sProduct container">
   {% render 'breadcumb' %}
   {%- liquid
     assign variant_images = product.images | where: 'attached_to_variant?', true | map: 'src'
@@ -75,10 +75,23 @@
 
       <!-- VARRIANTS -->
       {%- unless product.has_only_default_variant -%}
-        {%- for option in product.options_with_values -%}
-          {% assign option_type =  option.name | downcase %}
-          {% assign variant_index =  forloop.index %}
+        {% assign total_option = product.options_with_values.size %}
 
+        {%- for option in product.options_with_values -%}
+
+          {% assign option_position =   'option' | append: forloop.index %}
+          {% assign option_type =  option.name | downcase %}
+          
+          
+          {% comment %} OPTION NUMBER SEGTTINGS {% endcomment %}
+          {% assign variant_index =  forloop.index %}
+          {% if total_option <= variant_index %}
+            {% assign next_option = 0 %}
+          {% else %}
+            {% assign next_option = variant_index | plus: 1 %}
+          {% endif %}
+          {% assign prev_option =  variant_index | minus: 1 %}
+        
           <div class="sProduct__variant flex flex-col flex-wrap w-full">
           <label for="sProduct__choose-{{ forloop.index0 }}" class="uppercase font-bold mb-1">
             {{ option.name | escape }}
@@ -88,65 +101,70 @@
             {% else %}
               {% comment %} VARIANT RADIO {% endcomment %}
               {%- for value in option.values -%}
-                <span class="sProduct__select sProduct__radio {% if option.selected_value == value %} selected {% endif %}" data-type="{{ option.name | downcase }}">
+                  {% comment %} CHECK OPTION AVAIABLE {% endcomment %}
+                  {% assign option_avaiable = false %}
+                  {%- for variant in product.variants -%}
+                    {% if value == variant[option_position] %}
+                      {% if variant.available == true %}
+                        {% assign option_avaiable = true%}
+                        {% comment %} {{ option_avaiable }} {% endcomment %}
+                        {% break %} 
+                      {% endif %}
+                    {% endif %}
+                  {%- endfor -%}
+
+                {% assign option_id = "option-id-" | append: variant_index | append: '-' | append: forloop.index %}  
+                
+                {% comment %} RADIO CLASS {% endcomment %}
+                {% assign radio_class = 'sProduct__select sProduct__radio'%}
+                {% if option_avaiable == false %} 
+                  {% assign radio_class = radio_class | append: ' unavailable' %}
+                {% endif %}
+                {% if option.selected_value == value %} 
+                  {% assign radio_class = radio_class | append: ' selected' %}
+                {% endif %}
+                <span class="{{ radio_class }}" data-type="{{ option.name | downcase }}">
                   <input
                     type="radio"
+                    id="{{ option_id }}"
                     data-action="product-select"
                     data-option="{{ variant_index }}"
+                    data-next="{{ next_option }}"
+                    data-prev="{{ prev_option }}"
                     name="{{ option.name | downcase}}"
                     value="{{ value | escape | downcase}}"
                     {% if option.selected_value == value %}
                       checked
                     {% endif %}
+                    {% if option_avaiable == false %}
+                      disabled
+                    {% endif %}
                   >
-                  <label>{{ value | escape }}</label>
+                  <label for="{{ option_id }}">{{ value | escape }}</label>
                 </span>
               {%- endfor -%}
           {% endcase %}
         </div>
         </div>
         {%- endfor -%}
+        <script type="application/json" id="product-variants">
+          {{ product.variants | json }}
+        </script>
       {%- endunless -%}
 
-      <div class></div>
-
-      {% comment %} VARIANTS HIDDEN  {% endcomment %}
-      <select
-        name="id"
-        id="ProductSelect-{{ section.id }}"
-        class="product-form__variants no-js"
-      >
-        {% for variant in product.variants %}
-          {% if variant.available %}
-            <option
-              {% if variant == product.selected_or_first_available_variant %}
-                selected="selected"
-              {% endif %}
-              value="{{ variant.id }}"
-            >
-              {{ variant.title }}
-            </option>
-          {% else %}
-            <option disabled="disabled">
-              {{ variant.title }} - {{ 'products.product.sold_out' | t }}
-            </option>
-          {% endif %}
-        {% endfor %}
-      </select>
-
-
       {% comment %} VARIANTS QUANTITY {% endcomment %}
+
       {% for variant in product.variants %}
-        <div
-          InventoryManagment
+        <i
+          class="variantObject"
           data-id="{{variant.id}}"
           data-inventory="{{variant.inventory_quantity}}"
-          ,
           data-media-id="{{ variant.featured_media.id }}"
           option-1="{{variant.option1 | downcase}}"
           option-2="{{variant.option2 | downcase}}"
-        ></div>
+        ></i>
       {% endfor %}
+  
       
       {% comment %} PRICES {% endcomment %}
       <div class="sProduct__ProcessBar flex justify-between my-8 pb-5">
@@ -221,7 +239,6 @@
     </div>
   </div>
 </div>
-
 
 <script type="application/ld+json">
   {

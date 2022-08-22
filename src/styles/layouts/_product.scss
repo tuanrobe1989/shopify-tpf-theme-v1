@@ -26,16 +26,16 @@
       border-color: var(--primary);
     }
   }
-  &__ProcessBar{
-      border-bottom: 1px solid var(--sub);
+  &__ProcessBar {
+    border-bottom: 1px solid var(--sub);
   }
-  &__variant{
-    &__options{
+  &__variant {
+    &__options {
       margin-left: -1rem;
       margin-right: -1rem;
     }
   }
-  &__radio{
+  &__radio {
     border: 1px solid var(--sub);
     padding: 0.5rem;
     margin-left: 1rem;
@@ -44,7 +44,25 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    &.selected{
+    cursor: pointer;
+    position: relative;
+    &.unavailable {
+      &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        width: calc(100% + 4px);
+        left: -2px;
+        height: 1px;
+        background-color: var(--sub);
+        transform: rotate(25deg);
+      }
+    }
+    label {
+      cursor: pointer;
+    }
+    &.selected,
+    &:hover {
       background-color: var(--primary);
       color: var(--white);
     }

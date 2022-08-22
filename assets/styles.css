@@ -2004,8 +2004,25 @@ body.menuActived .header__hamb--actived {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  cursor: pointer;
+  position: relative;
 }
-.sProduct__radio.selected {
+.sProduct__radio.unavailable::after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: calc(100% + 4px);
+  left: -2px;
+  height: 1px;
+  background-color: rgb(187, 187, 187);
+  background-color: var(--sub);
+  -webkit-transform: rotate(25deg);
+          transform: rotate(25deg);
+}
+.sProduct__radio label {
+  cursor: pointer;
+}
+.sProduct__radio.selected, .sProduct__radio:hover {
   background-color: #f05214;
   background-color: var(--primary);
   color: #FFFFFF;
