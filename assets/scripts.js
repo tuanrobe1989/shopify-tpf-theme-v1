@@ -20403,10 +20403,17 @@ if (jQuery('.sProduct').length > 0) {
 } //SETTINGS PRODUCT VARIANTS
 
 
+var productObjects = {};
 var productVariants = {};
 
 tpfObjects.singleProductSettings = function () {
-  //CHECK VARIANTS
+  //CHECK PRODUCT OBJECTS
+  if (jQuery('#product-objects').length > 0) {
+    productObjects = jQuery.parseJSON(jQuery('#product-objects').text());
+  }
+
+  console.log(productObjects); //CHECK VARIANTS
+
   if (jQuery('#product-variants').length > 0) {
     productVariants = jQuery.parseJSON(jQuery('#product-variants').text());
   }
