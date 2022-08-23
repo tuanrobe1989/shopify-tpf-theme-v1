@@ -78,13 +78,15 @@
             {{ product.description }}
           </div>
         {%- endif -%}
+        {{ product.selected_or_first_available_variant | json}}
 
         <!-- VARRIANTS -->
         {%- unless product.has_only_default_variant -%}
+          {% assign product_current_variant = product.selected_or_first_available_variant%}
           {% assign total_option = product.options_with_values.size %}
-          {% assign option_1 = '' %}
-          {% assign option_2 = '' %}
-          {% assign option_3 = '' %}
+          {% assign option_1 = product_current_variant.option1 %}
+          {% assign option_2 = product_current_variant.option2 %}
+          {% assign option_3 = product_current_variant.option3 %}
 
           {%- for option in product.options_with_values -%}
 
@@ -187,10 +189,10 @@
             {% endif %}
             <span class="stock text-actived h5 uppercase">{{ available_stock }}</span>
             {% comment %} CHECK SKU {% endcomment %}
-            {% assign sku = product.selected_or_first_available_variant.sku %}
+            {% assign sku = product_current_variant.sku %}
             {% if sku != blank %}
             <span class="font-bold text-sub sku-line" {{ block.shopify_attributes }}"
-              ><span class="uppercase">{{ 'products.product.sku' | t }}</span>: <span class="sku">{{ product.selected_or_first_available_variant.sku }}</span></span
+              ><span class="uppercase">{{ 'products.product.sku' | t }}</span>: <span class="sku">{{ product_current_variant.sku }}</span></span
             >
             {% endif %}
           </p>
@@ -264,8 +266,8 @@
       ],
     {%- endif %}
     "description": {{ product.description | strip_html | json }},
-    {% if product.selected_or_first_available_variant.sku != blank -%}
-      "sku": {{ product.selected_or_first_available_variant.sku | json }},
+    {% if product_current_variant.sku != blank -%}
+      "sku": {{ product_current_variant.sku | json }},
     {%- endif %}
     "brand": {
       "@type": "Brand",
