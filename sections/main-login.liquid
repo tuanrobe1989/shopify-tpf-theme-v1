@@ -1,0 +1,163 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 768px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="login container section-{{ section.id }}-padding">
+  <div class="p-10 mx-auto my-8 md:my-16 sm:w-full md:w-3/5 lg:w-2/5 border border-solid">
+    <h2 id="recover" class="text-center text-2xl md:text-3xl font-black">
+      {{ 'customer.recover_password.title' | t }}
+    </h2>
+    <div>
+      <p class="text-center mt-2 mb-8">
+        {{ 'customer.recover_password.subtext' | t }}
+      </p>
+
+      {%- form 'recover_customer_password' -%}
+      {% assign recover_success = form.posted_successfully? %}
+
+      {%- if form.errors -%}
+      <div id="RecoverEmail-email-error" class="error">
+        <ul>
+          <li>{{ form.errors.messages['form'] }}</li>
+        </ul>
+      </div>
+      {%- endif -%}
+
+      <div class="field w-full">
+        <input type="email" value="" name="email" id="RecoverEmail" autocorrect="off" autocapitalize="off"
+          autocomplete="email" {% if form.errors %} aria-invalid="true" aria-describedby="RecoverEmail-email-error"
+          autofocus {% endif %} placeholder="{{ 'customer.login_page.email' | t }}">
+      </div>
+
+      <div class="mt-3">
+        <button class="btn">
+          {{ 'customer.login_page.submit' | t }}
+        </button>
+      </div>
+      <div class="mt-4">
+        <a href="#login" class="underline text-primary hover:text-black">
+          {{ 'customer.login_page.cancel' | t }}
+        </a>
+      </div>
+      {%- endform -%}
+    </div>
+
+    <h2 id="login" class="text-center text-2xl md:text-3xl font-black">
+      {{ 'customer.login_page.title' | t }}
+    </h2>
+    <div>
+      <p class="text-center mt-2 mb-8">
+        {{ 'customer.login_page.subtext' | t }}
+      </p>
+      {%- if recover_success == true -%}
+      <div class="success">
+        <ul>
+          <li>{{ 'customer.recover_password.success' | t }}</li>
+        </ul>
+      </div>
+      {%- endif -%}
+      {%- form 'customer_login', novalidate: 'novalidate' -%}
+      {%- if form.errors -%}
+      <div class="error">
+        <ul>
+          {{ form.errors | default_errors }}
+        </ul>
+      </div>
+      {%- endif -%}
+
+      <div class="field mb-3">
+        <input type="email" name="customer[email]" id="CustomerEmail" autocomplete="email" autocorrect="off"
+          autocapitalize="off" {% if form.errors contains 'form' %} aria-invalid="true" {% endif %}
+          placeholder="{{ 'customer.login_page.email' | t }}">
+      </div>
+
+      {%- if form.password_needed -%}
+      <div class="field mb-3">
+        <input type="password" value="" name="customer[password]" id="CustomerPassword" autocomplete="current-password"
+          {% if form.errors contains 'form' %} aria-invalid="true" {% endif %}
+          placeholder="{{ 'customer.login_page.password' | t }}">
+      </div>
+
+      <div>
+        <button class="btn">
+          {{ 'customer.login_page.sign_in' | t }}
+        </button>
+      </div>
+      {%- endif -%}
+
+      {%- if form.password_needed -%}
+      <div class="mt-4">
+        <a href="#recover" class="underline text-primary hover:text-black">
+          {{ 'customer.login_page.forgot_password' | t }}
+        </a>
+      </div>
+      {%- endif -%}
+
+      <div class="mt-8 text-center">
+        <h6 class="mb-3 font-semibold text-lg">
+          {{ 'customer.login_page.account_question' | t }}
+        </h6>
+        <a href="{{ routes.account_register_url }}" class="underline text-primary hover:text-black">
+          {{ 'customer.login_page.create_account' | t }}
+        </a>
+      </div>
+
+      {%- endform -%}
+    </div>
+
+    {%- if shop.checkout.guest_login -%}
+    <div class="text-center">
+      <hr>
+      <h2>{{ 'customer.login_page.guest_title' | t }}</h2>
+
+      {%- form 'guest_login' -%}
+      <button class="btn">
+        {{ 'customer.login_page.guest_continue' | t }}
+      </button>
+      {%- endform -%}
+    </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.main-login.name",
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 100
+    }
+  ]
+}
+{% endschema %}
