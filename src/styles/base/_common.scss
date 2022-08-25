@@ -130,3 +130,72 @@ table{
         }
     }
 }
+
+/*
+    FORM, FIELDS (INPUT, TEXTAREA...), BTN, ERROR, SUCCESS MSG
+*/
+.field {
+    input {
+        font-size: 1rem;
+        padding: 12px 30px;
+        border: 1px solid var(--lgray);
+        font-weight: 400;
+        outline: none;
+        width: 100%;
+    }
+    
+}
+
+.field.hasError {
+    input {
+        border-color: var(--red);
+        color: var(--red);
+        &:focus {
+            border: 1px solid var(--white);
+        }
+    }
+}
+
+
+.btn {
+    display: inline-block;
+    font-weight: 700;
+    color: var(--white);
+    text-transform: capitalize;
+    text-align: center;
+    vertical-align: middle;
+    user-select: none;
+    background-color: var(--black);
+    padding: 12px 45px;
+    font-size: 1rem;
+    line-height: 1.5;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.error {
+    color: var(--red);
+    background-color: var(--blur-red);
+    border: 1px solid var(--red);
+    padding: 6px 12px;
+    margin-bottom: 15px;
+    font-size: .9em;
+    text-align: left;
+    ul {
+        list-style: square;
+        margin-left: 15px;
+    }
+}
+
+.success {
+    color: var(--green);
+    background-color: var(--blur-green);
+    border: 1px solid var(--green);
+    padding: 6px 12px;
+    margin-bottom: 15px;
+    font-size: .9em;
+    text-align: left;
+    ul {
+        list-style: square;
+        margin-left: 15px;
+    }
+}

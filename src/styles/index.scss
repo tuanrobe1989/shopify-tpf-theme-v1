@@ -15,6 +15,10 @@
   --dot-defautl: #3e4d65;
   --dot-actived: #FFF;
   --white: #FFFFFF;
+  --red: #d02e2e;
+  --blur-red: #fff6f6;
+  --green: #428445;
+  --blur-green: #f7fff6;
 }
 // @import "./base/font";
 @import "../../node_modules/normalize.css/normalize.css";
@@ -24,6 +28,8 @@
 @import "./layouts/header";
 @import "./layouts/footer";
 @import "./layouts/product";
+@import "./components/login";
+
 html,
 body {
   font-family: 'Jura', sans-serif;

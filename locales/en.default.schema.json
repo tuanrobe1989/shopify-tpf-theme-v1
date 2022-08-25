@@ -1455,6 +1455,12 @@
         }
       }
     },
+    "main-login": {
+      "name": "Login"
+    },
+    "main-register": {
+      "name": "Registration"
+    },
     "main-list-collections": {
       "name": "Collections list page",
       "settings": {
