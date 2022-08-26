@@ -134,6 +134,8 @@
   "customer": {
     "account": {
       "title": "Account",
+      "my_account": "My Account",
+      "welcome": "Welcome",
       "details": "Account details",
       "view_addresses": "View addresses",
       "return": "Return to Account details"
