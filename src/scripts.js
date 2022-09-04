@@ -119,35 +119,64 @@ tpfObjects.singleProductThumb = function () {
     })
 }
 
+tpfObjects.updateCart = function () {
+    fetch('/cart.js')
+        .then((resp) => resp.json())
+        .then((data) => {
+            jQuery('.cart--totalItems').text(data.item_count);
+        })
+        .catch((err) => console.error(err));
+}
+
 
 if (jQuery('.sProduct').length > 0) {
-    var singleVariants = [];
-    var curVariant = 0;
+    //SETTINGS PRODUCT VARIANTS
+    var productObjects = {};
+    var productVariants = {};
+    var productOptions = {};
+    var productQuantiy = {};
 }
 
-//SETTINGS PRODUCT VARIANTS
-let productObjects = {};
-let productVariants = {};
-let productOptions = {};
+
 tpfObjects.singleProductSettings = function () {
 
-    //CHECK PRODUCT OBJECTS
-    if (jQuery('#product-objects').length > 0) {
-        productObjects = jQuery.parseJSON(jQuery('#product-objects').text());
-    }
+    if (jQuery('.sProduct').length > 0) {
 
-    //CHECK OPTIONS
-    if (jQuery('#product-options').length > 0) {
-        productOptions = jQuery.parseJSON(jQuery('#product-options').text());
-    }
+        //CHECK PRODUCT OBJECTS
+        if (jQuery('#product-objects').length > 0) {
+            productObjects = jQuery.parseJSON(jQuery('#product-objects').text());
+        }
 
-    //CHECK VARIANTS
-    if (jQuery('#product-variants').length > 0) {
-        productVariants = jQuery.parseJSON(jQuery('#product-variants').text());
+        //CHECK OPTIONS
+        if (jQuery('#product-options').length > 0) {
+            productOptions = jQuery.parseJSON(jQuery('#product-options').text());
+        }
+
+        //CHECK VARIANTS
+        if (jQuery('#product-variants').length > 0) {
+            productVariants = jQuery.parseJSON(jQuery('#product-variants').text());
+        }
+
+        let sProductQuantiySelect = jQuery('.sProduct--quantity');
+        productQuantiy = sProductQuantiySelect.val() * 1;
+
+        //SUM QUANTITY
+        jQuery('.sProduct--qup').click(function () {
+            productQuantiy = productQuantiy + 1;
+            sProductQuantiySelect.val(productQuantiy);
+        })
+
+        //SUB QUANTITY
+        jQuery('.sProduct--qdown').click(function () {
+            if (productQuantiy > 0) {
+                productQuantiy = productQuantiy - 1;
+                sProductQuantiySelect.val(productQuantiy);
+            }
+        })
     }
 }
 
-tpfObjects.singleProductVariant = function () {
+tpfObjects.singleProductActions = function () {
     if (productVariants) {
         console.log(productVariants);
         //SETINGS PARAMS
@@ -170,6 +199,7 @@ tpfObjects.singleProductVariant = function () {
             })
         }
 
+        //OPTION CHANGE
         eventChange.change(function () {
             let sProduct__radio = jQuery(this).closest('.sProduct__radio');
             let curVariant = jQuery(this).filter(':checked');
@@ -292,9 +322,15 @@ tpfObjects.singleProductVariant = function () {
                 })
                 if (productSelected) {
                     productSelected = productSelected[0];
-                    jQuery('#sProduct--variant option').each(function () {
+                    jQuery('.sProduct--sku').text(productSelected.sku);
+                    jQuery('.sProduct--variant option').each(function () {
+
                         if (jQuery(this).val() == productSelected.id) {
                             jQuery(this).prop("selected", true);
+                            const variantPrice = jQuery(this).attr('data-price');
+                            const variantComparePrice = jQuery(this).attr('data-compare-price');
+                            jQuery('.sProduct--price').text(variantPrice);
+                            jQuery('.sProduct--comparePrice').text(variantComparePrice);
                             return false;
                         }
                     })
@@ -304,7 +340,45 @@ tpfObjects.singleProductVariant = function () {
 
     }
 
+    jQuery('form[action$="/cart/add"]').submit(function () {
+        let _this = jQuery(this);
+        let url = window.Shopify.routes.root + 'cart/add.js';
+        let productId = _this.find('.sProduct--variant').val() * 1;
+        let productQty = _this.find('.sProduct--quantity').val() * 1;
+
+        let formData = {
+            'items': [
+                {
+                    'id': productId,
+                    'quantity': productQty
+                }
+            ]
+        };
+
+        fetch('/cart/add.js', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+        })
+            .then((resp) => {
+                console.log(resp.json());
+            })
+            .then((data) => {
+                tpfObjects.updateCart();
+            })
+            .catch((err) => {
+                console.error('Error: ' + err);
+            })
+
+
+
+        return false;
+    });
+
 }
+
 
 
 jQuery(document).ready(function ($) {
@@ -316,5 +390,5 @@ jQuery(document).ready(function ($) {
     tpfObjects.defaultCarousel();
     tpfObjects.singleProductThumb();
     tpfObjects.singleProductSettings();
-    tpfObjects.singleProductVariant();
+    tpfObjects.singleProductActions();
 });

@@ -20397,34 +20397,59 @@ tpfObjects.singleProductThumb = function () {
   });
 };
 
+tpfObjects.updateCart = function () {
+  fetch('/cart.js').then(function (resp) {
+    return resp.json();
+  }).then(function (data) {
+    jQuery('.cart--totalItems').text(data.item_count);
+  }).catch(function (err) {
+    return console.error(err);
+  });
+};
+
 if (jQuery('.sProduct').length > 0) {
-  var singleVariants = [];
-  var curVariant = 0;
-} //SETTINGS PRODUCT VARIANTS
-
-
-var productObjects = {};
-var productVariants = {};
-var productOptions = {};
+  //SETTINGS PRODUCT VARIANTS
+  var productObjects = {};
+  var productVariants = {};
+  var productOptions = {};
+  var productQuantiy = {};
+}
 
 tpfObjects.singleProductSettings = function () {
-  //CHECK PRODUCT OBJECTS
-  if (jQuery('#product-objects').length > 0) {
-    productObjects = jQuery.parseJSON(jQuery('#product-objects').text());
-  } //CHECK OPTIONS
+  if (jQuery('.sProduct').length > 0) {
+    //CHECK PRODUCT OBJECTS
+    if (jQuery('#product-objects').length > 0) {
+      productObjects = jQuery.parseJSON(jQuery('#product-objects').text());
+    } //CHECK OPTIONS
 
 
-  if (jQuery('#product-options').length > 0) {
-    productOptions = jQuery.parseJSON(jQuery('#product-options').text());
-  } //CHECK VARIANTS
+    if (jQuery('#product-options').length > 0) {
+      productOptions = jQuery.parseJSON(jQuery('#product-options').text());
+    } //CHECK VARIANTS
 
 
-  if (jQuery('#product-variants').length > 0) {
-    productVariants = jQuery.parseJSON(jQuery('#product-variants').text());
+    if (jQuery('#product-variants').length > 0) {
+      productVariants = jQuery.parseJSON(jQuery('#product-variants').text());
+    }
+
+    var sProductQuantiySelect = jQuery('.sProduct--quantity');
+    productQuantiy = sProductQuantiySelect.val() * 1; //SUM QUANTITY
+
+    jQuery('.sProduct--qup').click(function () {
+      productQuantiy = productQuantiy + 1;
+      sProductQuantiySelect.val(productQuantiy);
+    }); //SUB QUANTITY
+
+    jQuery('.sProduct--qdown').click(function () {
+      if (productQuantiy > 0) {
+        productQuantiy = productQuantiy - 1;
+        sProductQuantiySelect.val(productQuantiy);
+      }
+    });
   }
 };
 
-tpfObjects.singleProductVariant = function () {
+tpfObjects.singleProductActions = function () {
   if (productVariants) {
     console.log(productVariants); //SETINGS PARAMS
 
@@ -20445,7 +20470,8 @@ tpfObjects.singleProductVariant = function () {
           options['option_' + dataValue] = jQuery(this).find('.sProduct__radio').find('[type=radio]').val();
         }
       });
-    }
+    } //OPTION CHANGE
+
 
     eventChange.change(function () {
       var sProduct__radio = jQuery(this).closest('.sProduct__radio');
@@ -20580,9 +20606,14 @@ tpfObjects.singleProductVariant = function () {
 
         if (productSelected) {
           productSelected = productSelected[0];
-          jQuery('#sProduct--variant option').each(function () {
+          jQuery('.sProduct--sku').text(productSelected.sku);
+          jQuery('.sProduct--variant option').each(function () {
             if (jQuery(this).val() == productSelected.id) {
               jQuery(this).prop("selected", true);
+              var variantPrice = jQuery(this).attr('data-price');
+              var variantComparePrice = jQuery(this).attr('data-compare-price');
+              jQuery('.sProduct--price').text(variantPrice);
+              jQuery('.sProduct--comparePrice').text(variantComparePrice);
               return false;
             }
           });
@@ -20590,6 +20621,34 @@ tpfObjects.singleProductVariant = function () {
       }
     });
   }
+
+  jQuery('form[action$="/cart/add"]').submit(function () {
+    var _this = jQuery(this);
+
+    var url = window.Shopify.routes.root + 'cart/add.js';
+    var productId = _this.find('.sProduct--variant').val() * 1;
+    var productQty = _this.find('.sProduct--quantity').val() * 1;
+    var formData = {
+      'items': [{
+        'id': productId,
+        'quantity': productQty
+      }]
+    };
+    fetch('/cart/add.js', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formData)
+    }).then(function (resp) {
+      console.log(resp.json());
+    }).then(function (data) {
+      tpfObjects.updateCart();
+    }).catch(function (err) {
+      console.error('Error: ' + err);
+    });
+    return false;
+  });
 };
 
 jQuery(document).ready(function ($) {
@@ -20601,7 +20660,7 @@ jQuery(document).ready(function ($) {
   tpfObjects.defaultCarousel();
   tpfObjects.singleProductThumb();
   tpfObjects.singleProductSettings();
-  tpfObjects.singleProductVariant();
+  tpfObjects.singleProductActions();
 });
 })();
 

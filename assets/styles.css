@@ -1743,7 +1743,7 @@ select {
   padding: 0.7rem 1rem;
 }
 
-.error {
+.error, .errors {
   color: #d02e2e;
   color: var(--red);
   background-color: #fff6f6;
@@ -1755,7 +1755,7 @@ select {
   font-size: 0.9em;
   text-align: left;
 }
-.error ul {
+.error ul, .errors ul {
   list-style: square;
   margin-left: 15px;
 }

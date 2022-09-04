@@ -183,12 +183,12 @@ input[type="number"] {
   border: 1px solid var(--sub);
   text-align: center;
 }
-select{
-    border: 1px solid var(--sub);
-    padding: 0.7rem 1rem;
+select {
+  border: 1px solid var(--sub);
+  padding: 0.7rem 1rem;
 }
 
-.error {
+.error, .errors {
   color: var(--red);
   background-color: var(--blur-red);
   border: 1px solid var(--red);
