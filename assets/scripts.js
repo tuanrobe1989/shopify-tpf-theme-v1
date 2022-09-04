@@ -20577,7 +20577,16 @@ tpfObjects.singleProductVariant = function () {
               break;
           }
         });
-        console.log(productSelected);
+
+        if (productSelected) {
+          productSelected = productSelected[0];
+          jQuery('#sProduct--variant option').each(function () {
+            if (jQuery(this).val() == productSelected.id) {
+              jQuery(this).prop("selected", true);
+              return false;
+            }
+          });
+        }
       }
     });
   }

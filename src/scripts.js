@@ -221,7 +221,7 @@ tpfObjects.singleProductVariant = function () {
                                     return product;
                                 }
                             })
-                        }else{
+                        } else {
                             //FILTER PRODUCT SATISFY THE GIVEN CONDITIONS
                             nextVariants = productVariants.filter(function (product) {
                                 if (product.option1.toLowerCase() == options['option_1'] && product.option2.toLowerCase() == options['option_2'] && product.available == true) {
@@ -290,7 +290,15 @@ tpfObjects.singleProductVariant = function () {
                             break;
                     }
                 })
-                console.log(productSelected);
+                if (productSelected) {
+                    productSelected = productSelected[0];
+                    jQuery('#sProduct--variant option').each(function () {
+                        if (jQuery(this).val() == productSelected.id) {
+                            jQuery(this).prop("selected", true);
+                            return false;
+                        }
+                    })
+                }
             }
         })
 

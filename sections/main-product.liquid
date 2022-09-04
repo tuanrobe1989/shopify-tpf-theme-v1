@@ -216,10 +216,7 @@
         <form method="post" action="/cart/add">
           {% if product.variants.size > 1 %}
             <select
-              id="SingleOptionSelector-0"
-              class="single-option-selector single-option-selector-product-template product-form__input"
-              data-index="option1"
-              name="id"
+              id="sProduct--variant"
             >
               {% for variant in product.variants %}
                 {% if variant.available %}
