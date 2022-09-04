@@ -78,8 +78,10 @@
             {{ product.description }}
           </div>
         {%- endif -%}
-        {{ product.selected_or_first_available_variant | json}}
 
+        {% comment %} {% for variant in product.variants %}
+          <p>{{ variant.title }} | {{ variant.available }}</p>
+        {% endfor %} {% endcomment %}
         <!-- VARRIANTS -->
         {%- unless product.has_only_default_variant -%}
           {% assign product_current_variant = product.selected_or_first_available_variant%}
@@ -89,10 +91,8 @@
           {% assign option_3 = product_current_variant.option3 %}
 
           {%- for option in product.options_with_values -%}
-
             {% assign option_position =   'option' | append: forloop.index %}
             {% assign option_type =  option.name | downcase %}
-            
             
             {% comment %} OPTION NUMBER SEGTTINGS {% endcomment %}
             {% assign variant_index =  forloop.index %}
@@ -100,10 +100,10 @@
               {% assign next_option = 0 %}
             {% else %}
               {% assign next_option = variant_index | plus: 1 %}
-            {% endif %}
+            {% endif %} 
             {% assign prev_option =  variant_index | minus: 1 %}
-          
-            <div class="sProduct__variant flex flex-col flex-wrap w-full pt-5">
+            
+            <div id="sProduct__variant-{{ variant_index | add: 1}}" data-value="{{ variant_index | add: 1}}" class="sProduct__variant flex flex-col flex-wrap w-full pt-5">
             <label for="sProduct__choose-{{ forloop.index0 }}" class="uppercase font-bold mb-1">
               {{ option.name | escape }}
             </label>
@@ -115,15 +115,21 @@
                     {% comment %} CHECK OPTION AVAIABLE {% endcomment %}
                     {% assign option_avaiable = false %}
                     {%- for variant in product.variants -%}
-                      {% if value == variant[option_position] %}
-                        {% if variant.available == true %}
-                          {% assign option_avaiable = true%}
-                          {% comment %} {{ option_avaiable }} {% endcomment %}
+                      {% if variant.available == true %}
+                        {% if value == variant[option_position] and variant_index == 1%}
+                            {% assign option_avaiable = true%}
+                            {% comment %} {{ option_avaiable }} {% endcomment %}
+                            {% break %} 
+                        {% elsif variant_index == 2 and variant.option1 == option_1 and value == variant.option2 %}
+                          {% assign option_avaiable = true %}
+                          {% break %} 
+                        {% elsif variant_index == 3 and variant.option1 == option_1 and variant.option2 == option_2 and value == variant.option3 %}
+                          {% assign option_avaiable = true %}
                           {% break %} 
                         {% endif %}
                       {% endif %}
                     {%- endfor -%}
-
+                  
                   {% assign option_id = "option-id-" | append: variant_index | append: '-' | append: forloop.index %}  
                   
                   {% comment %} RADIO CLASS {% endcomment %}
@@ -158,25 +164,14 @@
           </div>
           </div>
           {%- endfor -%}
+          <script type="application/json" id="product-options">
+            {{ product.options_with_values | json }}
+          </script>
           <script type="application/json" id="product-variants">
             {{ product.variants | json }}
           </script>
         {%- endunless -%}
 
-        {% comment %} VARIANTS QUANTITY {% endcomment %}
-
-        {% for variant in product.variants %}
-          <i
-            class="variantObject"
-            data-id="{{variant.id}}"
-            data-inventory="{{variant.inventory_quantity}}"
-            data-media-id="{{ variant.featured_media.id }}"
-            option-1="{{variant.option1 | downcase}}"
-            option-2="{{variant.option2 | downcase}}"
-          ></i>
-        {% endfor %}
-    
-        
         {% comment %} PRICES {% endcomment %}
         <div class="sProduct__ProcessBar flex justify-between my-8 pb-5">
           {% render 'single-price' product:product, use_variant: true %}
@@ -243,9 +238,15 @@
                 {% endif %}
               {% endfor %}
             </select>
-            <input min="1" type="number" id="quantity" name="quantity" value="1">
-            <input type="submit" value="Add to cart" class="btn">
           {% endif %}
+          <div class="flex">
+            <p class="flex">
+              <span class="sProduct--qdown">-</span>
+              <input min="1" type="number" id="quantity" name="quantity" value="1" class="sProduct--quantity">
+              <span class="sProduct--up">+</span>
+            </p>
+          <input type="submit" value="Add to cart" class="btn">
+          </div>
         </form>
       </div>
     </div>

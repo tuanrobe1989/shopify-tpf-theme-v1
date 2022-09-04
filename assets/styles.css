@@ -1252,6 +1252,9 @@ table td{
 .mt-7{
   margin-top: 1.75rem;
 }
+.mb-7{
+  margin-bottom: 1.75rem;
+}
 .ml-10{
   margin-left: 2.5rem;
 }
@@ -1281,9 +1284,6 @@ table td{
 }
 .ml-4{
   margin-left: 1rem;
-}
-.mb-7{
-  margin-bottom: 1.75rem;
 }
 .block{
   display: block;
@@ -2144,10 +2144,8 @@ body.menuActived .header__hamb--actived {
 .sProduct__radio {
   border: 1px solid rgb(187, 187, 187);
   border: 1px solid var(--sub);
-  padding: 0.5rem;
   margin-left: 1rem;
   display: block;
-  min-width: 5rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2174,6 +2172,15 @@ body.menuActived .header__hamb--actived {
 }
 .sProduct__radio label {
   cursor: pointer;
+  padding: 0.5rem;
+  display: block;
+  min-width: 5rem;
+  text-align: center;
+}
+.sProduct__radio [type=radio] {
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 .sProduct__radio.selected, .sProduct__radio:hover {
   background-color: #f05214;
@@ -2181,7 +2188,6 @@ body.menuActived .header__hamb--actived {
   color: #FFFFFF;
   color: var(--white);
 }
-
 #recover,
 #recover + div {
   display: none;

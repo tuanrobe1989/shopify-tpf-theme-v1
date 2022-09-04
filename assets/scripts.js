@@ -20405,56 +20405,182 @@ if (jQuery('.sProduct').length > 0) {
 
 var productObjects = {};
 var productVariants = {};
+var productOptions = {};
 
 tpfObjects.singleProductSettings = function () {
   //CHECK PRODUCT OBJECTS
   if (jQuery('#product-objects').length > 0) {
     productObjects = jQuery.parseJSON(jQuery('#product-objects').text());
-  }
+  } //CHECK OPTIONS
 
-  console.log(productObjects); //CHECK VARIANTS
+
+  if (jQuery('#product-options').length > 0) {
+    productOptions = jQuery.parseJSON(jQuery('#product-options').text());
+  } //CHECK VARIANTS
+
 
   if (jQuery('#product-variants').length > 0) {
     productVariants = jQuery.parseJSON(jQuery('#product-variants').text());
   }
-
-  if (jQuery('.variantObject').length > 0) {
-    jQuery('.variantObject').each(function () {
-      var _this = jQuery(this);
-
-      var args = {};
-      args['variant_id'] = _this.attr('data-id');
-      args['featured_media'] = _this.attr('data-media-id');
-      args['inventory_quantity'] = _this.attr('data-inventory');
-      args['option_1'] = _this.attr('option-1');
-      args['option_2'] = _this.attr('option-2'); // args['next'] = _this.attr('data-next');
-      // args['prev'] = _this.attr('data-prev');
-      // args['option_type'] = _this.attr('data-option');
-
-      singleVariants.push(args);
-    }); //console.log(singleVariants);
-  }
 };
 
 tpfObjects.singleProductVariant = function () {
-  console.log(productVariants);
-  jQuery('input[data-action="product-select"]').change(function () {
-    var curVariant = jQuery(this).filter(':checked');
-    var curVariant_val = curVariant.val();
-    var number_option = curVariant.data('option');
-    console.log(number_option);
+  if (productVariants) {
+    console.log(productVariants); //SETINGS PARAMS
 
-    switch (number_option) {
-      default:
-        for (var i = 0; i < singleVariants.length; i++) {//console.log(singleVariants[i]['option_'+number_option])
+    var productVariantId = '';
+    var total_type_options = productOptions.length;
+    var eventChange = jQuery('input[data-action="product-select"]');
+    var options = {
+      'option_1': '' // 'option_2': '',
+      // 'option_3': ''
+
+    }; //SETUP DEFAULT VARIANT
+
+    if (jQuery('.sProduct__variant').length > 0) {
+      jQuery('.sProduct__variant').each(function () {
+        var dataValue = jQuery(this).attr('data-value');
+
+        if (jQuery(this).find('.sProduct__radio').hasClass('selected') == true) {
+          options['option_' + dataValue] = jQuery(this).find('.sProduct__radio').find('[type=radio]').val();
         }
-
-        break;
+      });
     }
-  }); // jQuery('.sProduct__select radio').change(function(){
-  //     // curVariant = jQuery(this).filter(':checked').val();
-  //     // console.log(curVariant);
-  // })
+
+    eventChange.change(function () {
+      var sProduct__radio = jQuery(this).closest('.sProduct__radio');
+      var curVariant = jQuery(this).filter(':checked');
+      var curVariant_val = curVariant.val();
+      var number_option = curVariant.data('option');
+
+      var _index = eventChange.index(jQuery(this));
+
+      var next = jQuery(this).attr('data-next');
+
+      if (number_option == 1) {
+        var sProduct__variant = jQuery('#sProduct__variant-' + next);
+      } else if (next == 0) {
+        var sProduct__variant = jQuery('#sProduct__variant-' + number_option);
+      } else {
+        var sProduct__variant = jQuery('#sProduct__variant-' + number_option);
+      }
+
+      var _sProduct__radio = jQuery('.sProduct__radio'); //CHECK DO YOU HAVE NEXT OPTIONS
+
+
+      if (next > 0) {
+        _sProduct__radio.each(function () {
+          var _nextIndex = _sProduct__radio.index(jQuery(this));
+
+          if (_index != _nextIndex) {
+            jQuery(this).removeClass('selected');
+            jQuery(this).find('[type="radio"]').prop('checked', false);
+          }
+        });
+      }
+
+      options['option_' + number_option] = curVariant.val();
+
+      switch (number_option) {
+        case 1:
+          //RESET NEXT OPTIONS
+          sProduct__variant.find('.sProduct__select').each(function () {
+            jQuery(this).addClass('unavailable');
+          }); // GET NEXT VARIANT
+
+          var sProduct__variantFunc = function sProduct__variantFunc(_sProduct__variant) {
+            var _next_numb = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+
+            var nextVariants = '';
+
+            if (_next_numb == '') {
+              _next_numb = next; //FILTER PRODUCT SATISFY THE GIVEN CONDITIONS
+
+              nextVariants = productVariants.filter(function (product) {
+                if (product.option1.toLowerCase() == options['option_' + number_option] && product.available == true) {
+                  return product;
+                }
+              });
+            } else {
+              //FILTER PRODUCT SATISFY THE GIVEN CONDITIONS
+              nextVariants = productVariants.filter(function (product) {
+                if (product.option1.toLowerCase() == options['option_1'] && product.option2.toLowerCase() == options['option_2'] && product.available == true) {
+                  return product;
+                }
+              });
+            } // RESET VARIANT
+
+
+            _sProduct__variant.find('.sProduct__radio').each(function () {
+              var _radio = jQuery(this).find('[type="radio"]');
+
+              _radio.prop('disabled', true); //UNABLE OPTION AVAIABLE
+
+
+              for (var i = 0; i < nextVariants.length; i++) {
+                if (nextVariants[i]['option' + _next_numb].toLowerCase() == _radio.val()) {
+                  jQuery(this).removeClass('unavailable');
+
+                  _radio.prop('disabled', false);
+                }
+              }
+
+              if (nextVariants.length > 0) {
+                //ADD DEFAULT OPTION AVAIABLE
+                if (nextVariants[0]['option' + _next_numb].toLowerCase() == _radio.val()) {
+                  _radio.prop('checked', true);
+
+                  options['option_' + _next_numb] = _radio.val();
+                  jQuery(this).closest('.sProduct__radio').addClass('selected');
+
+                  var _next = _radio.attr('data-next');
+
+                  if (_next > 0) {
+                    var __sProduct__variant = jQuery('#sProduct__variant-' + _next);
+
+                    sProduct__variantFunc(__sProduct__variant, _next);
+                  }
+                }
+              }
+            });
+          }; // RUN ACTION
+
+
+          sProduct__variantFunc(sProduct__variant);
+          break;
+
+        default:
+          sProduct__variant.find('.sProduct__radio').each(function () {
+            jQuery(this).removeClass('selected');
+          });
+          break;
+      } //ACTIVED RADIO SELECTED 
+
+
+      sProduct__radio.addClass('selected'); //GET PRODUCT SELECTED
+
+      if (Object.keys(options).length == total_type_options) {
+        var productSelected = productVariants.filter(function (product) {
+          switch (total_type_options) {
+            case 2:
+              if (product.option1.toLowerCase() == options.option_1 && product.option2.toLowerCase() == options.option_2) {
+                return product;
+              }
+
+              break;
+
+            case 3:
+              if (product.option1.toLowerCase() == options.option_1 && product.option2.toLowerCase() == options.option_2 && product.option3.toLowerCase() == options.option_3) {
+                return product;
+              }
+
+              break;
+          }
+        });
+        console.log(productSelected);
+      }
+    });
+  }
 };
 
 jQuery(document).ready(function ($) {
