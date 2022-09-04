@@ -1285,6 +1285,9 @@ table td{
 .ml-4{
   margin-left: 1rem;
 }
+.mr-2{
+  margin-right: 0.5rem;
+}
 .block{
   display: block;
 }
@@ -1688,7 +1691,10 @@ table tr:nth-child(even) {
   border: 1px solid var(--white);
 }
 
-.btn {
+.btn,
+input[type=button],
+input[type=submit],
+input[type=reset] {
   display: inline-block;
   font-weight: 700;
   color: #FFFFFF;
@@ -1700,15 +1706,41 @@ table tr:nth-child(even) {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  background-color: #f05214;
+  background-color: var(--primary);
+  padding: 0.7rem 1rem;
+  font-size: 1rem;
+  line-height: 1;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  text-transform: uppercase;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  cursor: pointer;
+}
+.btn:hover,
+input[type=button]:hover,
+input[type=submit]:hover,
+input[type=reset]:hover {
   background-color: #000;
   background-color: var(--black);
-  padding: 12px 45px;
-  font-size: 1rem;
-  line-height: 1.5;
-  -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+}
+
+input[type=submit] {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+input[type=number] {
+  border: 1px solid rgb(187, 187, 187);
+  border: 1px solid var(--sub);
+  text-align: center;
+}
+
+select {
+  border: 1px solid rgb(187, 187, 187);
+  border: 1px solid var(--sub);
+  padding: 0.7rem 1rem;
 }
 
 .error {

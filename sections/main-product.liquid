@@ -215,7 +215,6 @@
 
         <form method="post" action="/cart/add">
           {% if product.variants.size > 1 %}
-            <label for="SingleOptionSelector-0">Select a size</label>
             <select
               id="SingleOptionSelector-0"
               class="single-option-selector single-option-selector-product-template product-form__input"
@@ -240,12 +239,12 @@
             </select>
           {% endif %}
           <div class="flex">
-            <p class="flex">
-              <span class="sProduct--qdown">-</span>
+            <p class="flex mr-2">
+              <span class="btn sProduct--qdown">-</span>
               <input min="1" type="number" id="quantity" name="quantity" value="1" class="sProduct--quantity">
-              <span class="sProduct--up">+</span>
+              <span class="btn sProduct--up">+</span>
             </p>
-          <input type="submit" value="Add to cart" class="btn">
+          <input type="submit" value="Add to cart" >
           </div>
         </form>
       </div>

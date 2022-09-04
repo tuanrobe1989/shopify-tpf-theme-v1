@@ -1,39 +1,39 @@
 .container {
-    margin: 0 auto;
-    padding-left: 1rem;
-    padding-right: 1rem;
+  margin: 0 auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 a {
-    transition: all 0.3s linear;
+  transition: all 0.3s linear;
 }
 
 img.lazy {
-    opacity: 0;
+  opacity: 0;
 }
 
 img:not(.initial) {
-    transition: opacity 0.3s;
+  transition: opacity 0.3s;
 }
 
 img.initial,
 img.loaded,
 img.error {
-    opacity: 1;
+  opacity: 1;
 }
 /*
     TABLES
 */
-table{
-    width: 100%;
-    tr{
-        &:nth-child(odd){
-            background: var(--lgray2);
-        }
-        &:nth-child(even){
-            background: var(--gray2);
-        }
+table {
+  width: 100%;
+  tr {
+    &:nth-child(odd) {
+      background: var(--lgray2);
     }
+    &:nth-child(even) {
+      background: var(--gray2);
+    }
+  }
 }
 
 /*
@@ -41,161 +41,177 @@ table{
 */
 
 .dots-bottom {
-    &.dot-square {
-        .owl-dots {
-            .owl-dot span {
-                width: 30px !important;
-                height: 5px !important;
-                border-radius: 0 !important;
-            }
-        }
-    }
-
+  &.dot-square {
     .owl-dots {
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        transform: translate(-50%, -50%);
-
-        .owl-dot.active span {
-            background-color: var(--dot-actived) !important;
-        }
-
-        .owl-dot span {
-            background-color: var(--dot-defautl) !important;
-        }
+      .owl-dot span {
+        width: 30px !important;
+        height: 5px !important;
+        border-radius: 0 !important;
+      }
     }
+  }
+
+  .owl-dots {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    .owl-dot.active span {
+      background-color: var(--dot-actived) !important;
+    }
+
+    .owl-dot span {
+      background-color: var(--dot-defautl) !important;
+    }
+  }
 }
 
-.owl-carousel[data-actived-dot="primary"]{
-    .owl-dot.active{
-        span{
-            background-color: var(--primary) !important;
-        }
+.owl-carousel[data-actived-dot="primary"] {
+  .owl-dot.active {
+    span {
+      background-color: var(--primary) !important;
     }
+  }
 }
-.owl-carousel[data-hidden-dots="true"]{
-    .owl-dots {
-        opacity: 0;
-        position: absolute;
-    }
+.owl-carousel[data-hidden-dots="true"] {
+  .owl-dots {
+    opacity: 0;
+    position: absolute;
+  }
 }
-
-
 
 .hover_image_zoom {
-    transition: 0.3s all linear;
-    overflow: hidden;
-    position: relative;
+  transition: 0.3s all linear;
+  overflow: hidden;
+  position: relative;
 
-    &:hover {
-        transform: scale(1.1);
-
-        &::before,
-        &::after {
-            width: calc(100% - 2rem);
-        }
-    }
+  &:hover {
+    transform: scale(1.1);
 
     &::before,
     &::after {
-        content: "";
-        transition: 0.3s all linear;
-        width: 0;
-        height: 2px;
-        background-color: var(--primary);
-        display: block;
-        position: absolute;
-        
+      width: calc(100% - 2rem);
     }
+  }
 
-    &::before {
-        top: 1px;
-        left: 1rem;
-    }
+  &::before,
+  &::after {
+    content: "";
+    transition: 0.3s all linear;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary);
+    display: block;
+    position: absolute;
+  }
 
-    &::after {
-        bottom: 1px;
-        right: 1rem;
-    }
+  &::before {
+    top: 1px;
+    left: 1rem;
+  }
+
+  &::after {
+    bottom: 1px;
+    right: 1rem;
+  }
 }
 
 /*
     BREADCUMBS
 */
-.breadcrumb{
-    span{
-        &:last-child{
-            color: var(--sub);
-        }
+.breadcrumb {
+  span {
+    &:last-child {
+      color: var(--sub);
     }
+  }
 }
 
 /*
     FORM, FIELDS (INPUT, TEXTAREA...), BTN, ERROR, SUCCESS MSG
 */
 .field {
-    input {
-        font-size: 1rem;
-        padding: 12px 30px;
-        border: 1px solid var(--lgray);
-        font-weight: 400;
-        outline: none;
-        width: 100%;
-    }
-    
+  input {
+    font-size: 1rem;
+    padding: 12px 30px;
+    border: 1px solid var(--lgray);
+    font-weight: 400;
+    outline: none;
+    width: 100%;
+  }
 }
 
 .field.hasError {
-    input {
-        border-color: var(--red);
-        color: var(--red);
-        &:focus {
-            border: 1px solid var(--white);
-        }
+  input {
+    border-color: var(--red);
+    color: var(--red);
+    &:focus {
+      border: 1px solid var(--white);
     }
+  }
 }
 
-
-.btn {
-    display: inline-block;
-    font-weight: 700;
-    color: var(--white);
-    text-transform: capitalize;
-    text-align: center;
-    vertical-align: middle;
-    user-select: none;
+.btn,
+input[type="button"],
+input[type="submit"],
+input[type="reset"] {
+  display: inline-block;
+  font-weight: 700;
+  color: var(--white);
+  text-transform: capitalize;
+  text-align: center;
+  vertical-align: middle;
+  user-select: none;
+  background-color: var(--primary);
+  padding: 0.7rem 1rem;
+  font-size: 1rem;
+  line-height: 1;
+  transition: all 0.3s;
+  text-transform: uppercase;
+  box-sizing: border-box;
+  cursor: pointer;
+  &:hover {
     background-color: var(--black);
-    padding: 12px 45px;
-    font-size: 1rem;
-    line-height: 1.5;
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  }
+}
+input[type="submit"] {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+input[type="number"] {
+  border: 1px solid var(--sub);
+  text-align: center;
+}
+select{
+    border: 1px solid var(--sub);
+    padding: 0.7rem 1rem;
 }
 
 .error {
-    color: var(--red);
-    background-color: var(--blur-red);
-    border: 1px solid var(--red);
-    padding: 6px 12px;
-    margin-bottom: 15px;
-    font-size: .9em;
-    text-align: left;
-    ul {
-        list-style: square;
-        margin-left: 15px;
-    }
+  color: var(--red);
+  background-color: var(--blur-red);
+  border: 1px solid var(--red);
+  padding: 6px 12px;
+  margin-bottom: 15px;
+  font-size: 0.9em;
+  text-align: left;
+  ul {
+    list-style: square;
+    margin-left: 15px;
+  }
 }
 
 .success {
-    color: var(--green);
-    background-color: var(--blur-green);
-    border: 1px solid var(--green);
-    padding: 6px 12px;
-    margin-bottom: 15px;
-    font-size: .9em;
-    text-align: left;
-    ul {
-        list-style: square;
-        margin-left: 15px;
-    }
+  color: var(--green);
+  background-color: var(--blur-green);
+  border: 1px solid var(--green);
+  padding: 6px 12px;
+  margin-bottom: 15px;
+  font-size: 0.9em;
+  text-align: left;
+  ul {
+    list-style: square;
+    margin-left: 15px;
+  }
 }
