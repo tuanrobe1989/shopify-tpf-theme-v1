@@ -39,6 +39,12 @@
         "share_on_pinterest": "Pin on Pinterest"
       }
     },
+    "pagination": {
+      "label": "Pagination",
+      "page": "Page {{ number }}",
+      "next": "Next page",
+      "previous": "Previous page"
+    },
     "search": {
       "title": "Search for products on our site",
       "placeholder": "Search our store",
@@ -150,7 +156,7 @@
       "cancel": "Decline invitation"
     },
     "addresses": {
-      "title": "Addresses",
+      "title": "Your Addresses",
       "default": "Default",
       "add_new": "Add a new address",
       "edit_address": "Edit address",

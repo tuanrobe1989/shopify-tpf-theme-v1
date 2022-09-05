@@ -932,6 +932,7 @@ module.exports = {
       min: 'min-content',
       max: 'max-content',
       fit: 'fit-content',
+      custom1: 'calc(50% - 32px)',
     }),
     willChange: {
       auto: 'auto',
